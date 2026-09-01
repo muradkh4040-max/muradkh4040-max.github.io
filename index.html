@@ -1,1184 +1,545 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>المهندس للالكترونيات — الأجهزة V17</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المهندس للإلكترونيات</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f5f7fb;color:#172033;font-family:Tahoma,Arial,sans-serif}
-.hero{background:linear-gradient(135deg,#0b2452,#176bd6);color:#fff;padding:42px 18px}
-.wrap{max-width:1250px;margin:auto}.brand{display:flex;gap:12px;align-items:center;font-weight:800}
-.logo{width:48px;height:48px;border-radius:15px;background:#fff;color:#176bd6;display:grid;place-items:center;font-size:24px}
-h1{font-size:clamp(30px,5vw,52px);margin:22px 0 8px}.hero p{font-size:17px;opacity:.9}
-.nav{position:sticky;top:0;z-index:5;background:#ffffffee;backdrop-filter:blur(10px);border-bottom:1px solid #e4e8ef;padding:12px 16px}
-.tabs{max-width:1250px;margin:auto;display:flex;gap:8px;overflow:auto}.tabs button{white-space:nowrap;border:1px solid #dfe4ec;background:#fff;border-radius:999px;padding:10px 15px;font-weight:700;cursor:pointer}.tabs button.active{background:#176bd6;color:#fff}
-.brand{max-width:1250px;margin:35px auto;padding:0 16px;display:block}.section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}.section-title h2{margin:0;font-size:30px}.section-title span{background:#eaf2ff;color:#1760bb;padding:8px 12px;border-radius:12px;font-weight:700}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}.card{background:#fff;border:1px solid #e3e7ee;border-radius:20px;overflow:hidden;box-shadow:0 7px 22px #17203310;transition:.2s}.card:hover{transform:translateY(-3px)}
-.device-img{height:180px;background:linear-gradient(135deg,#eaf1fb,#fff);display:grid;place-items:center;position:relative}.phone-icon{font-size:72px;filter:drop-shadow(0 10px 10px #17203322)}.device-img img{max-width:82%;max-height:170px;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 10px 12px #17203320)}.device-img span{position:absolute;top:10px;right:10px;background:#fff;border:1px solid #e3e7ee;border-radius:999px;padding:6px 9px;font-size:10px;color:#657086}
-.content{padding:16px}h3{font-size:18px;margin:0 0 10px}.memory{display:flex;align-items:baseline;gap:6px;margin-bottom:10px}.memory b{font-size:14px}.memory small{font-size:10px;color:#6b7485;margin-left:7px}.content p{color:#697386;font-size:12px;line-height:1.7;margin:0 0 12px}
-.spec{background:#f7f9fc;border-radius:10px;padding:8px 9px;margin-top:7px}.spec label{display:block;color:#7a8495;font-size:9px;margin-bottom:3px}.spec strong{font-size:11px;line-height:1.4}
-.note{max-width:1250px;margin:0 auto 50px;padding:0 16px;color:#697386;font-size:12px}
-@media(max-width:600px){.grid{grid-template-columns:1fr 1fr;gap:10px}.device-img{height:135px}.phone-icon{font-size:55px}.content{padding:11px}h3{font-size:14px}.spec strong{font-size:10px}}
-@media(max-width:420px){.grid{grid-template-columns:1fr}}
-</style></head>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+:root{
+  --bg:#070b12; --panel:#0d1420; --panel2:#111b29; --text:#f4f7fb;
+  --muted:#9aa8bb; --blue:#20a7ff; --cyan:#67ddff; --gold:#f5b942;
+  --line:rgba(255,255,255,.09); --shadow:0 20px 70px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 80% 0%,#12263b 0,#070b12 38%);color:var(--text);font-family:Cairo,system-ui,sans-serif}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(1180px,92%);margin:auto}
+.header{position:sticky;top:0;z-index:50;background:rgba(7,11,18,.84);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900}
+.brand svg{width:48px;height:48px}
+.brand span{font-size:20px}.brand small{display:block;color:var(--gold);font-size:11px;font-weight:700}
+.navlinks{display:flex;gap:7px;flex-wrap:wrap;transition:.25s} .navlinks.open{display:flex}
+.navlinks a{padding:9px 12px;color:#c9d4e2;border-radius:10px;font-size:13px}
+.navlinks a:hover{background:#fff1}
+.hero{min-height:620px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:30px;padding:65px 0}
+.badge{display:inline-flex;padding:8px 13px;border:1px solid #20a7ff55;background:#20a7ff0d;color:#7edcff;border-radius:99px;font-size:13px}
+h1{font-size:clamp(40px,6vw,74px);line-height:1.05;margin:20px 0 16px;font-weight:900}
+h1 span{color:var(--blue)}
+.hero p{color:var(--muted);font-size:18px;line-height:2;max-width:650px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{border:0;border-radius:14px;padding:13px 21px;cursor:pointer;font-weight:800}
+.btn.primary{background:linear-gradient(135deg,var(--blue),#0069ff);color:white;box-shadow:0 12px 30px #008cff33}
+.btn.ghost{background:#ffffff08;border:1px solid var(--line);color:white}
+.hero-art{min-height:450px;display:grid;place-items:center;position:relative}
+.glow{position:absolute;width:330px;height:330px;background:#168fff25;filter:blur(50px);border-radius:50%}
+.phone{width:250px;height:480px;border:8px solid #dbe8f3;border-radius:40px;background:linear-gradient(150deg,#182c42,#07111e);box-shadow:0 30px 80px #000,0 0 50px #20a7ff25;position:relative;transform:rotate(8deg)}
+.phone:before{content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:90px;height:22px;border-radius:0 0 15px 15px;background:#05090e}
+.phone:after{content:"";position:absolute;inset:45px 18px 18px;border-radius:25px;background:radial-gradient(circle at 30% 20%,#4de0ff55,transparent 35%),linear-gradient(145deg,#102c48,#09121f 65%,#173c58)}
+.camera{position:absolute;top:55px;right:27px;width:72px;height:82px;border-radius:20px;background:#0b111a;border:2px solid #ffffff22;z-index:2}
+.lens{width:20px;height:20px;border:4px solid #94a8bb;border-radius:50%;margin:8px}
+.section{padding:70px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:25px}
+.section h2{font-size:32px;margin:0}.section-head p{color:var(--muted);margin:0}
+.cards{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
+.card{min-height:155px;background:linear-gradient(180deg,#111c2a,#0b121c);border:1px solid var(--line);border-radius:20px;padding:18px 12px;display:flex;flex-direction:column;justify-content:space-between;transition:.25s;cursor:pointer;box-shadow:0 8px 30px #0002}
+.card:hover{transform:translateY(-6px);border-color:#20a7ff55;box-shadow:0 20px 45px #0005}
+.icon{font-size:31px}.card b{font-size:15px}.card span{font-size:11px;color:var(--muted)}
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel{background:linear-gradient(135deg,#101b29,#0a111a);border:1px solid var(--line);border-radius:25px;padding:28px;box-shadow:var(--shadow)}
+.panel h3{margin-top:0;font-size:24px}.panel p{color:var(--muted);line-height:2}
+.chips{display:flex;gap:9px;flex-wrap:wrap}.chip{padding:9px 12px;border:1px solid var(--line);border-radius:999px;background:#ffffff06;color:#cbd6e3;font-size:12px}
+.footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);text-align:center}
+#page{display:none;min-height:100vh}
+.page-hero{padding:80px 0 35px;position:relative;overflow:hidden}
+.page-hero h1{font-size:52px}.page-hero p{max-width:720px}
+.device-bg{position:absolute;left:4%;top:20px;width:310px;height:560px;opacity:.12;transform:rotate(-14deg);pointer-events:none}
+.manufacturer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.manufacturer{background:#101925;border:1px solid var(--line);border-radius:15px;padding:15px;text-align:center;font-weight:700;color:#dbe5ef}
+.category-label{display:inline-block;color:var(--blue);font-weight:800;font-size:13px;margin-bottom:7px}
+.back{margin-bottom:20px}
+.search{width:100%;background:#ffffff07;border:1px solid var(--line);color:#fff;border-radius:14px;padding:13px 16px;outline:0;margin:10px 0 25px}
+@media(max-width:900px){.hero,.feature{grid-template-columns:1fr}.cards{grid-template-columns:repeat(3,1fr)}.manufacturer-grid{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}}
+@media(max-width:560px){.cards{grid-template-columns:repeat(2,1fr)}.manufacturer-grid{grid-template-columns:1fr}.hero{padding-top:40px}.hero-art{min-height:400px}.phone{width:210px;height:400px}}
+
+.topbar{background:#05080e;border-bottom:1px solid rgba(255,255,255,.06);font-size:11px;color:#9aa8bb}
+.topbar-inner{height:32px;display:flex;justify-content:space-between;align-items:center}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.nav-contact{padding:10px 15px;border:1px solid #20a7ff55;border-radius:12px;color:#bdeaff;font-size:12px;font-weight:800;background:#20a7ff09}
+.menu-btn{display:none;background:#ffffff08;border:1px solid var(--line);color:#fff;border-radius:12px;padding:9px 12px;cursor:pointer}
+.hero{position:relative}
+.hero:before{content:"";position:absolute;inset:25px -15% auto;height:1px;background:linear-gradient(90deg,transparent,#20a7ff44,transparent);pointer-events:none}
+.hero p{max-width:600px}
+.hero-art{perspective:900px}
+.phone{transform:rotate(8deg) rotateY(-12deg);transition:.5s}
+.hero-art:hover .phone{transform:rotate(3deg) rotateY(-4deg) translateY(-8px)}
+.phone-screen{position:absolute;inset:55px 24px 24px;border-radius:25px;z-index:2;padding:48px 18px 18px;background:linear-gradient(160deg,#123b5d,#07101a);display:flex;flex-direction:column;align-items:center;gap:7px;box-shadow:inset 0 0 35px #20a7ff12}
+.phone-screen b{font-size:25px}.phone-screen small{color:#67ddff}.screen-line{height:2px;width:70%;background:#20a7ff55;margin:22px 0 8px}.screen-pills{display:flex;gap:7px}.screen-pills i{width:38px;height:7px;border-radius:99px;background:#ffffff18}
+.floating-card{position:absolute;z-index:4;background:rgba(13,20,32,.86);border:1px solid #ffffff14;box-shadow:0 20px 50px #0006;backdrop-filter:blur(12px);border-radius:16px;padding:12px 14px;display:flex;gap:9px;align-items:center;font-size:20px;animation:float 4s ease-in-out infinite}
+.floating-card span{font-size:11px;color:#dce7f1;font-weight:700}
+.fc1{top:18%;right:0}.fc2{bottom:17%;left:0;animation-delay:1.4s}
+@keyframes float{50%{transform:translateY(-9px)}}
+.trust-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.trust-strip>div{background:#0c141f;padding:20px;display:flex;gap:14px;align-items:center}
+.trust-strip strong{font-size:24px;color:#20a7ff}.trust-strip span{font-weight:800;font-size:13px}.trust-strip small{color:var(--muted);font-weight:400}
+.card{position:relative;overflow:hidden}
+.card:after{content:"↗";position:absolute;left:14px;top:13px;color:#20a7ff;opacity:.35;transition:.2s}
+.card:hover:after{opacity:1;transform:translate(-3px,3px)}
+.section{scroll-margin-top:100px}
+.cta{margin-top:10px;margin-bottom:70px;padding:35px 40px;border:1px solid #20a7ff33;border-radius:28px;background:radial-gradient(circle at 10% 50%,#20a7ff15,transparent 40%),linear-gradient(135deg,#101d2c,#0b121c);display:flex;align-items:center;justify-content:space-between;gap:25px}
+.cta h2{font-size:30px;margin:12px 0 4px}.cta p{color:var(--muted);margin:0}
+.footer{background:#05080e}
+@media(max-width:900px){
+  .trust-strip{grid-template-columns:repeat(2,1fr)}
+  .nav-actions .nav-contact{display:none}.menu-btn{display:block}
+}
+@media(max-width:560px){
+  .topbar-inner span:last-child{display:none}
+  .topbar-inner{justify-content:center}
+  .trust-strip{grid-template-columns:1fr}
+  .trust-strip>div{padding:16px}
+  .cta{padding:26px;display:block}.cta .btn{display:inline-block;margin-top:20px}
+  .floating-card{display:none}
+}
+ 
+.offer-card{border-color:#f5b94255;background:radial-gradient(circle at 80% 15%,#f5b94212,transparent 45%),linear-gradient(180deg,#171b25,#0b121c)}
+.offer-card:hover{border-color:#f5b94299;box-shadow:0 20px 50px #f5b94218}
+.offer-card .icon{filter:drop-shadow(0 5px 10px #f5b94244)}
+.offer-card em{position:absolute;top:12px;right:12px;background:#f5b942;color:#17110a;border-radius:999px;padding:3px 8px;font-size:9px;font-style:normal;font-weight:900}
+
+.offers-page{display:none;min-height:100vh}
+.offers-hero{padding:55px 0 25px;display:flex;justify-content:space-between;align-items:end;gap:25px}
+.offers-hero h1{font-size:clamp(38px,5vw,60px);margin:12px 0 8px}
+.offers-hero p{color:var(--muted);line-height:2;margin:0;max-width:650px}
+.offer-filter{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 28px}
+.offer-filter button{background:#ffffff07;border:1px solid var(--line);color:#cbd6e3;border-radius:999px;padding:9px 15px;cursor:pointer;font-size:12px;font-weight:800}
+.offer-filter button.active,.offer-filter button:hover{background:#20a7ff15;border-color:#20a7ff66;color:#7edcff}
+.offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding-bottom:70px}
+.offer-product{position:relative;background:linear-gradient(180deg,#121d2b,#0a111a);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 12px 40px #0003;transition:.25s}
+.offer-product:hover{transform:translateY(-6px);border-color:#20a7ff55;box-shadow:0 22px 55px #0006}
+.offer-image{height:210px;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#20a7ff1a,transparent 52%),#09121e;font-size:78px}
+.offer-badge{position:absolute;top:14px;right:14px;background:#ef4444;color:#fff;border-radius:999px;padding:5px 10px;font-size:11px;font-weight:900}
+.offer-body{padding:20px}
+.offer-cat{font-size:11px;color:#67ddff;font-weight:800}
+.offer-body h3{margin:6px 0 8px;font-size:19px}
+.offer-body p{margin:0;color:var(--muted);font-size:12px;line-height:1.8;min-height:42px}
+.price-row{display:flex;align-items:baseline;gap:9px;margin:16px 0}
+.new-price{font-size:25px;font-weight:900;color:#fff}.currency{font-size:12px;color:#67ddff}.old-price{text-decoration:line-through;color:#718095;font-size:13px}
+.offer-actions{display:flex;gap:8px}.offer-actions .btn{flex:1;text-align:center;padding:11px 10px;font-size:12px}
+.offer-note{font-size:10px;color:#8291a5;margin-top:10px;text-align:center}
+.empty-offers{grid-column:1/-1;text-align:center;padding:65px 20px;border:1px dashed #ffffff18;border-radius:24px;color:var(--muted)}
+@media(max-width:900px){.offer-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.offers-hero{display:block;padding-top:40px}.offer-grid{grid-template-columns:1fr}}
+
+.telecom-card{border-color:#67ddff33;background:radial-gradient(circle at 80% 10%,#67ddff0d,transparent 48%),linear-gradient(180deg,#111d2a,#0b121c)}
+.router-card{border-color:#20a7ff33;background:radial-gradient(circle at 80% 10%,#20a7ff0d,transparent 48%),linear-gradient(180deg,#111d2a,#0b121c)}
+.telecom-card:hover,.router-card:hover{border-color:#67ddff88}
+
+.connectivity-note{margin:0 0 28px;color:var(--muted);font-size:13px;line-height:2}
+
+/* ===== Homepage storefront upgrade V8 ===== */
+.hero{min-height:650px;padding:72px 0 86px}
+.hero-copy{position:relative;z-index:2}
+.hero-copy h1{letter-spacing:-1.5px}
+.hero-stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:28px}
+.hero-stat{display:flex;flex-direction:column;gap:2px}
+.hero-stat strong{font-size:20px}.hero-stat span{font-size:10px;color:var(--muted)}
+.home-highlights{display:grid;grid-template-columns:1.35fr .65fr;gap:14px;margin:-24px auto 35px;position:relative;z-index:5}
+.highlight-box{min-height:210px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,#121f2f,#0a121c);padding:26px;position:relative;overflow:hidden;box-shadow:0 18px 45px #0004}
+.highlight-box:after{position:absolute;left:18px;bottom:-32px;font-size:120px;opacity:.055}
+.highlight-offer:after{content:"🔥"}.highlight-connect:after{content:"📡"}
+.highlight-box h3{font-size:24px;margin:9px 0}.highlight-box p{color:var(--muted);font-size:12px;line-height:2;max-width:520px}
+.highlight-label{font-size:11px;font-weight:900;color:#f5b942}
+.highlight-connect .highlight-label{color:#67ddff}
+.highlight-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.section-head .view-all{color:#67ddff;font-size:12px;font-weight:900;text-decoration:none}
+.card{min-height:175px}
+.card .icon{font-size:34px}
+.store-benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:5px auto 45px}
+.benefit{border:1px solid var(--line);background:#ffffff04;border-radius:18px;padding:18px;text-align:center}
+.benefit strong{display:block;margin:7px 0;font-size:13px}.benefit span{color:var(--muted);font-size:10px}
+@media(max-width:850px){.home-highlights{grid-template-columns:1fr}.store-benefits{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.hero{min-height:auto}.store-benefits{grid-template-columns:1fr}}
+
+.mobile-model-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.manufacturer.brand-clickable{cursor:pointer;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.manufacturer.brand-clickable small{font-size:10px;color:var(--cyan);font-weight:800}
+.mobile-model{overflow:hidden;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#101a27,#0b1119);box-shadow:0 15px 35px #0003}
+.model-photo{height:230px;background:#f4f5f7;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.model-photo img{width:100%;height:100%;object-fit:cover}
+.model-body{padding:17px}
+.model-brand{font-size:10px;color:var(--gold);font-weight:900}
+.model-body h3{font-size:18px;margin:6px 0}
+.model-body p{font-size:11px;color:var(--muted);line-height:1.9;min-height:43px}
+.model-specs{font-size:10px;color:#b9c7d8;border-top:1px solid var(--line);padding-top:10px;margin-top:10px}
+.model-body .btn{margin-top:14px;width:100%}
+.empty-state{grid-column:1/-1;text-align:center;padding:45px;color:var(--muted)}
+@media(max-width:950px){.mobile-model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.mobile-model-grid{grid-template-columns:1fr}.model-photo{height:250px}}
+
+.mobile-catalog{display:block}
+.mobile-brand-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.brand-tab{border:1px solid var(--line);background:#ffffff06;color:#d9e5f2;border-radius:12px;padding:10px 14px;cursor:pointer;font:inherit;font-size:12px;font-weight:800}
+.brand-tab.active{background:linear-gradient(135deg,var(--blue),#0069ff);border-color:transparent;color:#fff}
+.mobile-catalog .mobile-model-grid{display:grid}
+</style>
+</head>
 <body>
-<header class="hero"><div class="wrap"><div class="brand"><div class="logo">م</div><span>المهندس للالكترونيات</span></div><h1>أجهزة الموبايل والتابلت</h1><p>قائمة الأجهزة المتوفرة — بدون أسعار، مرتبة حسب الشركة مع المواصفات الأساسية.</p></div></header>
-<nav class="nav"><div class="tabs"><button class="active" data-brand="all">الكل</button><button data-brand="Honor">Honor</button><button data-brand="Xiaomi">Xiaomi</button><button data-brand="Nokia / HMD">Nokia / HMD</button><button data-brand="Tecno">Tecno</button><button data-brand="Apple">Apple</button><button data-brand="realme">realme</button></div></nav>
-<main><section class="brand" id="brand-0"><div class="section-title"><h2>Honor</h2><span>19 إصدار</span></div><div class="grid">
-        <article class="card">
-          <div class="device-img"><img src="https://creativehub.teliacompany.com/m/687da51496d1bdef/original/HONOR-Magic-V5-16GB-512GB-Dawn-Gold-02.png" alt="Honor Magic V5" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor Magic V5</h3>
-            <div class="memory"><b>16+16 GB Turbo</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>7.95” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>64MP + 20MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>5820mAh · 66W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 8 Elite</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://lcdn.altex.ro/media/catalog/product/h/o/honor_magic_8_pro_black_01_3037ce09.jpg" alt="Honor Magic 8 Pro" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor Magic 8 Pro</h3>
-            <div class="memory"><b>12+12 GB Turbo</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.71” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>200MP + 50MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7100mAh · 100W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 8 Elite</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://cdn.beebom.com/mobile/honor-600-5g-front-back-1.png" alt="Honor 600 Pro" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor 600 Pro</h3>
-            <div class="memory"><b>12+12 GB Turbo</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.57” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>200MP + 50MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7000mAh · 80W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 8 Elite</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://cdn.beebom.com/mobile/honor-600-5g-front-back-1.png" alt="Honor 600" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor 600</h3>
-            <div class="memory"><b>12+16 GB Turbo</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.57” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>200MP + 50MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7000mAh · 80W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 7 Gen 4</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://cdn.beebom.com/mobile/honor-600-5g-front-back-1.png" alt="Honor 600" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor 600</h3>
-            <div class="memory"><b>8+16 GB Turbo</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.57” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>200MP + 50MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7000mAh · 80W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 7 Gen 4</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://storage.irshad.az/products/resized/ogZwH0mEMBnMlM04rzO3FT4EoG9xDW5T6HiM0Hk0.png" alt="Honor X9d" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor X9d</h3>
-            <div class="memory"><b>12+12 GB Turbo</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.79” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>108MP + 16MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>8300mAh · 66W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 6 Gen 4</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://storage.irshad.az/products/resized/ogZwH0mEMBnMlM04rzO3FT4EoG9xDW5T6HiM0Hk0.png" alt="Honor X9d" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor X9d</h3>
-            <div class="memory"><b>8+8 GB Turbo</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.79” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>108MP + 16MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>8300mAh · 66W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 6 Gen 4</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://cdn.idealo.com/folder/Product/209706/6/209706611/s4_produktbild_max/honor-600-lite-vert-clair.jpg" alt="Honor 600 Lite" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor 600 Lite</h3>
-            <div class="memory"><b>8+8 GB Turbo</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.60” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>108MP + 16MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6520mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>MTK 7100 Elite</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.gulfdeals.com/cdn/shop/files/Shopify_Product_Image_8_3161020d-b515-46d2-8e9d-d6b77e134569_1024x.png?v=1772793057" alt="Honor X8d" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor X8d</h3>
-            <div class="memory"><b>8+8 GB Turbo</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.77” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>108MP + 16MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7000mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 6s Gen 2</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.gulfdeals.com/cdn/shop/files/Shopify_Product_Image_8_3161020d-b515-46d2-8e9d-d6b77e134569_1024x.png?v=1772793057" alt="Honor X8d" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor X8d</h3>
-            <div class="memory"><b>8+8 GB Turbo</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.77” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>108MP + 16MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7000mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 6s Gen 2</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://sudospaces.com/sudo-dienthoaiviet/honor-x7e-plus-5g-minh-hoa.jpg.webp" alt="Honor X7e Plus" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor X7e Plus</h3>
-            <div class="memory"><b>8+16 GB Turbo</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.87” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP + 5MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>8100mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 4 Gen 4</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.elryan.com/img/600/600/resize/catalog/product/6/8/68b8211a33ba33002bafb72b62678c082f-44766_1.jpg" alt="Honor X7e" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor X7e</h3>
-            <div class="memory"><b>6+12 GB Turbo</b><small>RAM</small><b>128 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.87” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP + 5MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>8100mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 4 Gen 4</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.elryan.com/img/600/600/resize/catalog/product/6/8/68b8211a33ba33002bafb72b62678c082f-44766_1.jpg" alt="Honor X7e" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor X7e</h3>
-            <div class="memory"><b>6+6 GB Turbo</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.61” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP + 5MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7500mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>MTK G81 Ultra</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.elryan.com/img/600/600/resize/catalog/product/6/8/68b8211a33ba33002bafb72b62678c082f-44766_1.jpg" alt="Honor X7e" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor X7e</h3>
-            <div class="memory"><b>6+6 GB Turbo</b><small>RAM</small><b>128 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.61” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP + 5MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7500mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>MTK G81 Ultra</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.mygsm.me/media/catalog/product/cache/cd27a0d6f4197d1b7e37983dff472110/image/2945034f6/honor-x7d-4g-256gb-8gb-ram-black.png" alt="Honor X7d 5G" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor X7d 5G</h3>
-            <div class="memory"><b>8+8 GB Turbo</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.77” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP + 5MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6500mAh · 35W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 6s Gen 3</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.mygsm.me/media/catalog/product/cache/cd27a0d6f4197d1b7e37983dff472110/image/2945034f6/honor-x7d-4g-256gb-8gb-ram-black.png" alt="Honor X7d 4G" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor X7d 4G</h3>
-            <div class="memory"><b>8+8 GB Turbo</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.77” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>108MP + 8MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6500mAh · 35W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 685 4G</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://cdn.visaovip.com/img/prod/celular-honor-x5c-nla-lx1-nfc-4gb-de-ram-128gb-tela-674-dual-sim-lte-ocean-azul/56824/730080.jpg" alt="Honor X5c" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor X5c</h3>
-            <div class="memory"><b>4+4 GB Turbo</b><small>RAM</small><b>64 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.74” 90Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>13MP + 5MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>5260mAh · 15W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>MTK G81 4G</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www-file.honor.com/content/dam/honor/common/product-list/honor-choice/t10/t10-id-silver.png" alt="Honor Choice AI T10" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor Choice AI T10</h3>
-            <div class="memory"><b>4+4 GB Turbo</b><small>RAM</small><b>64 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.74” 90Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>13MP + 5MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>5000mAh · 10W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>T615</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www-file.honor.com/content/dam/honor/common/product-list/honor-choice/t10/t10-id-silver.png" alt="Honor Choice AI T10" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Honor Choice AI T10</h3>
-            <div class="memory"><b>3+3 GB Turbo</b><small>RAM</small><b>32 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.74” 90Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>13MP + 5MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>5000mAh · 10W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>T615</strong></div>
-          </div>
-        </article></div></section><section class="brand" id="brand-1"><div class="section-title"><h2>Xiaomi</h2><span>20 إصدار</span></div><div class="grid">
-        <article class="card">
-          <div class="device-img"><img src="https://www.cdiscount.com/pdt2/3/0/3/1/700x700/aacuw33303/rw/smartphone-xiaomi-redmi-a7-pro.jpg" alt="Xiaomi Redmi A7 Pro" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Redmi A7 Pro</h3>
-            <div class="memory"><b>4 GB</b><small>RAM</small><b>128 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.9” LCD 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>13MP + 8MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6000mAh · 15W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>UNISOC T7250</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://img-cdn.heureka.group/v1/d1bbe98b-484e-40e4-b814-20c2257c2142.jpg" alt="Xiaomi Redmi 15C" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Redmi 15C</h3>
-            <div class="memory"><b>8 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.9” 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP + 8MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6000mAh · 33W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Helio G81-Ultra</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://img.pccomponentes.com/articles/1099/10992448/1192-xiaomi-redmi-note-15-4g-8gb-256gb-677-negro-07ba806f-214d-490f-a4a0-47607a9087d5.jpg" alt="Xiaomi Redmi Note 15" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Redmi Note 15</h3>
-            <div class="memory"><b>8 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.77” AMOLED 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>108MP+2MP + 20MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6000mAh · 33W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Helio G100-Ultra</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://img.pccomponentes.com/articles/1099/10992448/1192-xiaomi-redmi-note-15-4g-8gb-256gb-677-negro-07ba806f-214d-490f-a4a0-47607a9087d5.jpg" alt="Xiaomi Redmi Note 15 Pro" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Redmi Note 15 Pro</h3>
-            <div class="memory"><b>8 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.77” AMOLED 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>200MP+8MP + 32MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6500mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Helio G200-Ultra</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://img.pccomponentes.com/articles/1099/10992448/1192-xiaomi-redmi-note-15-4g-8gb-256gb-677-negro-07ba806f-214d-490f-a4a0-47607a9087d5.jpg" alt="Xiaomi Redmi Note 15 Pro 5G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Redmi Note 15 Pro 5G</h3>
-            <div class="memory"><b>8 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.83” AMOLED 1.5K 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>200MP + 20MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6580mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Dimensity 7400-Ultra</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://img.pccomponentes.com/articles/1099/10992448/1192-xiaomi-redmi-note-15-4g-8gb-256gb-677-negro-07ba806f-214d-490f-a4a0-47607a9087d5.jpg" alt="Xiaomi Redmi Note 15 Pro 5G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Redmi Note 15 Pro 5G</h3>
-            <div class="memory"><b>12 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.83” AMOLED 1.5K 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>200MP + 20MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6580mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Dimensity 7400-Ultra</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://img.pccomponentes.com/articles/1099/10992448/1192-xiaomi-redmi-note-15-4g-8gb-256gb-677-negro-07ba806f-214d-490f-a4a0-47607a9087d5.jpg" alt="Xiaomi Redmi Note 15 Pro+ 5G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Redmi Note 15 Pro+ 5G</h3>
-            <div class="memory"><b>12 GB</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.83” CrystalRes AMOLED 1.5K</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>200MP + 32MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6500mAh · 100W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 7s Gen 4</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.phonelectrics.com/cdn/shop/files/Xiaomi17T-1.jpg?v=1781136516" alt="Xiaomi Xiaomi 17T" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Xiaomi 17T</h3>
-            <div class="memory"><b>12 GB</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.59” AMOLED 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50+50+12MP + 32MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6500mAh · 67W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Dimensity 8500-Ultra</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://storage.irshad.az/products/resized/dBCCckLO22MjGkf6Q71sNsxlm37Z8fST1u6JTHzQ.png" alt="Xiaomi Xiaomi 17T Pro" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Xiaomi 17T Pro</h3>
-            <div class="memory"><b>12 GB</b><small>RAM</small><b>1 TB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.83” AMOLED 144Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50+50+12MP + 32MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7000mAh · 100W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Dimensity 9500</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://cdn.etoren.com/upload/images/0.84173700_1772420430_xiaomi-17-5g-dual-sim-256gb-venture-green-12gb-ram-global-version.png" alt="Xiaomi Xiaomi 17" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Xiaomi 17</h3>
-            <div class="memory"><b>12 GB</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.3” CrystalRes OLED 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50+50+50MP + 50MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6330mAh · 100W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 8 Elite Gen 5</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://cdn.24h.com.vn/upload/4-2025/images/2025-12-26/gsmarena_004-1766742545-224-width738height900.jpg" alt="Xiaomi Xiaomi 17 Ultra" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Xiaomi 17 Ultra</h3>
-            <div class="memory"><b>16 GB</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.9” HyperRGB OLED 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50+200+50MP + 50MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6000mAh · 90W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 8 Elite Gen 5</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.citytel.bg/wp-content/uploads/2025/06/1-69-1222x1500.jpg" alt="Xiaomi Redmi Pad 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Redmi Pad 2</h3>
-            <div class="memory"><b>4 GB</b><small>RAM</small><b>64 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>9.7” 2K 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>8MP + 5MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7600mAh · 18W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 6s Gen 4</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.citytel.bg/wp-content/uploads/2025/06/1-69-1222x1500.jpg" alt="Xiaomi Redmi Pad 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Redmi Pad 2</h3>
-            <div class="memory"><b>4 GB</b><small>RAM</small><b>128 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>9.7” 2K 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>8MP + 5MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7600mAh · 18W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 6s Gen 4</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://joybox.uz/wp-content/uploads/2025/07/redmi-pad-2-wi-fi-4128gb-graphite-gray01-2.jpg" alt="Xiaomi Redmi Pad 2 4G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Redmi Pad 2 4G</h3>
-            <div class="memory"><b>4 GB</b><small>RAM</small><b>128 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>11” 2.5K 90Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>8MP + 5MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7600mAh · 18W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 6s Gen 4</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.citytel.bg/wp-content/uploads/2025/06/1-69-1222x1500.jpg" alt="Xiaomi Redmi Pad 2 WiFi" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Redmi Pad 2 WiFi</h3>
-            <div class="memory"><b>4 GB</b><small>RAM</small><b>128 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>11” 2.5K 90Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>8MP + 5MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>9000mAh · 18W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Helio G100-Ultra</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.citytel.bg/wp-content/uploads/2025/06/1-69-1222x1500.jpg" alt="Xiaomi Redmi Pad 2 WiFi" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Redmi Pad 2 WiFi</h3>
-            <div class="memory"><b>8 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>11” 2.5K 90Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>8MP + 5MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>9000mAh · 18W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Helio G100-Ultra</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://joybox.uz/wp-content/uploads/2025/07/redmi-pad-2-wi-fi-4128gb-graphite-gray01-2.jpg" alt="Xiaomi Redmi Pad 2 4G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Redmi Pad 2 4G</h3>
-            <div class="memory"><b>8 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>11” 2.5K 90Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>8MP + 5MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>9000mAh · 18W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Helio G100-Ultra</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://precosnoparaguai.s3.amazonaws.com/product_images/d2f9814b-92e2-43ac-86c7-40fa39be34d7.webp" alt="Xiaomi Redmi Pad 2 Pro" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Redmi Pad 2 Pro</h3>
-            <div class="memory"><b>8 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>12.1” 2.5K 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>8MP + 8MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>12000mAh · 33W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 7s Gen 4</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://thumb.pccomponentes.com/w-530-530/articles/1101/11019683/2455-xiaomi-pad-8-112-32k-8gb-128gb-azul-mejor-precio.jpg" alt="Xiaomi Xiaomi Pad 8" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Xiaomi Pad 8</h3>
-            <div class="memory"><b>8 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>11.2” 3.2K 144Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>13MP + 8MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>9200mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 8s Gen 4</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.tradeinn.com/f/14311/143117385_5/xiaomi-pad-8-pro-12gb-512gb-11.2-tablet.webp" alt="Xiaomi Xiaomi Pad 8 Pro" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Xiaomi Xiaomi Pad 8 Pro</h3>
-            <div class="memory"><b>12 GB</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>11.2” 3.2K 144Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP + 32MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>9200mAh · 67W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 8 Elite</strong></div>
-          </div>
-        </article></div></section><section class="brand" id="brand-2"><div class="section-title"><h2>Nokia / HMD</h2><span>13 إصدار</span></div><div class="grid">
-        <article class="card">
-          <div class="device-img"><img src="https://onestop.ng/storage/products/images/2026/04/07/69d508a30c91a-hmd-105-4g-front-and-back.png" alt="Nokia / HMD HMD 100" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Nokia / HMD HMD 100</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>—</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>2G keypad phone</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://cyberdeals.lk/wp-content/uploads/2025/06/HMD-105-2G-Dual-SIM-Feature-Phone-1-768x768.jpg" alt="Nokia / HMD HMD 105 2G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Nokia / HMD HMD 105 2G</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>—</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>2G keypad phone</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://storage.googleapis.com/shy-pub/16980/hmd1101-1725889053856.jpeg" alt="Nokia / HMD HMD 110 2G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Nokia / HMD HMD 110 2G</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>—</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>2G keypad phone</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://cdn.beebom.com/mobile/hmd-130-music-blue-front-and-back.png" alt="Nokia / HMD HMD 130 2G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Nokia / HMD HMD 130 2G</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>—</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>2G keypad phone</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.tek4life.pt/media/catalog/product/cache/2/image/800x800/85e4522595efc69f496374d01ef2bf13/n/o/nokia_hmd_150_1.png" alt="Nokia / HMD HMD 150 2G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Nokia / HMD HMD 150 2G</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>—</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>2G keypad phone</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://cdn.idealo.com/folder/Product/201506/6/201506622/s1_produktbild_max/nokia-6310.jpg" alt="Nokia / HMD HMD 6310 2G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Nokia / HMD HMD 6310 2G</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>—</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>2G keypad phone</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://cdn.hoanghamobile.vn/i/previewV2/Uploads/2024/09/06/vox-basic-hmd-vox-basic-r-angle-left-back-cyan-00000.png" alt="Nokia / HMD HMD 105 4G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Nokia / HMD HMD 105 4G</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>—</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>4G keypad phone</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://cdn.shopify.com/s/files/1/2505/6374/files/HMD_110_4G-Blue-FrontBack-Int.png?v=1758797676" alt="Nokia / HMD HMD 110 4G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Nokia / HMD HMD 110 4G</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>—</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>4G keypad phone</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.phonebunch.com/phone-pictures/nokia_215_4g_%282024%29-5366%20%281%29.jpg" alt="Nokia / HMD HMD 215 4G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Nokia / HMD HMD 215 4G</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>—</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>4G keypad phone</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://images.ctfassets.net/wcfotm6rrl7u/6K7e3Cpc0TDVHkbjEdW1CT/2441f173547bcb7725e427df48c36049/nokia-5710_XpressAudio-black-front_back-int.png?fit=pad&h=195&q=88&w=195" alt="Nokia / HMD HMD 5710 4G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Nokia / HMD HMD 5710 4G</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>—</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>4G keypad phone</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.hmd.com/images/device/hmd_101_4_g.png" alt="Nokia / HMD HMD 101 4G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Nokia / HMD HMD 101 4G</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>—</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>4G keypad phone</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://spacenet.tn/306747-large_default/telephone-portable-musique-hmd-130-noir.jpg" alt="Nokia / HMD HMD 130 2G Music" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Nokia / HMD HMD 130 2G Music</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>—</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>Music keypad phone</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://lcdn.altex.ro/media/catalog/product/g/s/gsmhmd150grey_3_92f8dd27.jpg" alt="Nokia / HMD HMD 150 2G Music" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Nokia / HMD HMD 150 2G Music</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>—</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>Music keypad phone</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article></div></section><section class="brand" id="brand-3"><div class="section-title"><h2>Tecno</h2><span>14 إصدار</span></div><div class="grid">
-        <article class="card">
-          <div class="device-img"><img src="https://www.mobiledokan.com/media/tecno-camon-50-ultra-nebula-titanium-official-color-image.webp" alt="Tecno CAMON 50 Ultra 5G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Tecno CAMON 50 Ultra 5G</h3>
-            <div class="memory"><b>12+12 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.78” Curved AMOLED 144Hz 1.5K</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>Sony 50MP+50MP+8MP + 50MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6500mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Dimensity 7400 Ultimate</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.authentico.pk/images/product_gallery/1775634521_camon_50_%282%29.png" alt="Tecno CAMON 50 Pro" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Tecno CAMON 50 Pro</h3>
-            <div class="memory"><b>8+8 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.78” Curved AMOLED 144Hz 1.5K</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>Sony 50MP+50MP+8MP + 32MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6500mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Helio G200</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://welectronics.com/images/stories/virtuemart/product/TecnoPova7Ultrawhite1.jpg" alt="Tecno POVA 7 Ultra 5G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Tecno POVA 7 Ultra 5G</h3>
-            <div class="memory"><b>12+12 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.67” AMOLED 1.5K</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>108MP+8MP + 13MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6000mAh · 70W + 30W wireless</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Dimensity 8350 Ultimate</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://i.ebayimg.com/images/g/GVAAAeSwmOFpkaUA/s-l1200.jpg" alt="Tecno POVA Curve 2 5G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Tecno POVA Curve 2 5G</h3>
-            <div class="memory"><b>8+8 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.78” 144Hz FHD+</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP+2MP + 13MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>8000mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Dimensity 7100 Ultimate</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.elryan.com/img/600/600/resize/catalog/product/6/6/6628d702a70b4b004cb6fdfc78462cm7-90083.jpg" alt="Tecno CAMON 40 Pro 5G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Tecno CAMON 40 Pro 5G</h3>
-            <div class="memory"><b>12 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.78” AMOLED 144Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>Sony LYT-700C 50MP+8MP + 50MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>5200mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Dimensity 7300 Ultimate</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://namzyphones.com/wp-content/uploads/2025/11/namzy-phones-tecno-spark-slim-1.jpg" alt="Tecno SPARK Slim" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Tecno SPARK Slim</h3>
-            <div class="memory"><b>8+8 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.78” AMOLED 144Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP + 13MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>5200mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Helio G200</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://d13pvy8xd75yde.cloudfront.net/global/spark50_kn4_kn4n/800%2A800/ink-black.png" alt="Tecno SPARK 50 Pro" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Tecno SPARK 50 Pro</h3>
-            <div class="memory"><b>4+8 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.78” 120Hz HD+</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP + 8MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6000mAh · 60W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Helio G100</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://d13pvy8xd75yde.cloudfront.net/global/spark50_kn4_kn4n/800%2A800/ink-black.png" alt="Tecno SPARK 50" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Tecno SPARK 50</h3>
-            <div class="memory"><b>4+8 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.78” 120Hz LCD</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP + 8MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7000mAh · 18W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Helio G81</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://d13pvy8xd75yde.cloudfront.net/global/spark50_kn4_kn4n/800%2A800/ink-black.png" alt="Tecno SPARK 50" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Tecno SPARK 50</h3>
-            <div class="memory"><b>4+8 GB</b><small>RAM</small><b>128 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.78” 120Hz LCD</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP + 8MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7000mAh · 18W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Helio G81</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://cdn.kalvo.com/uploads/img/gallery/82333-tecno-spark-40-5g-6.jpg" alt="Tecno SPARK 40 5G" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Tecno SPARK 40 5G</h3>
-            <div class="memory"><b>4+4 GB</b><small>RAM</small><b>128 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.75” 120Hz Smooth Display</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP + 5MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6000mAh · 18W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Dimensity 6400 5G+</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://cdn.kalvo.com/uploads/img/gallery/79835-tecno-spark-go-3-13.jpg" alt="Tecno SPARK GO 3" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Tecno SPARK GO 3</h3>
-            <div class="memory"><b>4+4 GB</b><small>RAM</small><b>128 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.75” 120Hz Smooth Display</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>13MP + 8MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>5000mAh · 15W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Unisoc T7250</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://cdn.kalvo.com/uploads/img/gallery/79835-tecno-spark-go-3-13.jpg" alt="Tecno SPARK GO 3" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Tecno SPARK GO 3</h3>
-            <div class="memory"><b>4+4 GB</b><small>RAM</small><b>64 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.75” 120Hz Smooth Display</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>13MP + 8MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>5000mAh · 15W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Unisoc T7250</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://arystorephone.com/wp-content/uploads/2025/12/Tecno-Megapad-Pro-Aurora-Violet.jpg?v=1767086914" alt="Tecno MEGAPAD PRO" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Tecno MEGAPAD PRO</h3>
-            <div class="memory"><b>8+8 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>12” 2K 90Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>13MP + 5MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>10000mAh · 33W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>MediaTek G100 Ultimate</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://welectronics.com/images/stories/virtuemart/product/TecnoMegapadSEblue32.jpg" alt="Tecno MEGAPAD SE" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Tecno MEGAPAD SE</h3>
-            <div class="memory"><b>4+4 GB</b><small>RAM</small><b>128 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>11” FHD+</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>8MP + 5MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>8000mAh · 18W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 685</strong></div>
-          </div>
-        </article></div></section><section class="brand" id="brand-4"><div class="section-title"><h2>Apple</h2><span>18 إصدار</span></div><div class="grid">
-        <article class="card">
-          <div class="device-img"><img src="https://www.phonebunch.com/phone-pictures/apple_iphone_15-5145%20%281%29.jpg" alt="Apple iPhone 15" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 15</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>128 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://gsmservice.co.il/image/cache/catalog/1-%D0%A1%D0%BC%D0%B0%D1%80%D1%82%D1%84%D0%BE%D0%BD%D1%8B%20%D0%B8%20%D0%BF%D0%BB%D0%B0%D0%BD%D1%88%D0%B5%D1%82%D1%8B/Apple/iPhone%2016/Iphone16plus-blue-1000x1000.jpg" alt="Apple iPhone 16" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 16</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>128 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://backend.paiinternational.in/media/images/1_AoMTZF1.jpg" alt="Apple iPhone 16 Plus" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 16 Plus</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>128 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://backend.paiinternational.in/media/images/1_AoMTZF1.jpg" alt="Apple iPhone 16 Plus" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 16 Plus</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.tescomobile.com/media/catalog/product/i/p/iphone_17_sage_pdp_image_position_1__gben.png" alt="Apple iPhone 17e" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 17e</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.tescomobile.com/media/catalog/product/i/p/iphone_17_sage_pdp_image_position_1__gben.png" alt="Apple iPhone 17e" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 17e</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.tescomobile.com/media/catalog/product/i/p/iphone_17_sage_pdp_image_position_1__gben.png" alt="Apple iPhone 17" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 17</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.tescomobile.com/media/catalog/product/i/p/iphone_17_sage_pdp_image_position_1__gben.png" alt="Apple iPhone 17" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 17</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.whatmobile.com.pk/admin/images/Apple/iPhone%2017%20Air/Apple-iphone-17-Air-Image-4.jpg" alt="Apple iPhone 17 Air" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 17 Air</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.whatmobile.com.pk/admin/images/Apple/iPhone%2017%20Air/Apple-iphone-17-Air-Image-4.jpg" alt="Apple iPhone 17 Air" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 17 Air</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.tuttotech.net/wp-content/uploads/2025/09/Apple-iPhone-Air-Celeste-01-1024x1024.jpg" alt="Apple iPhone Air" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone Air</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>1 TB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://multimedia.bbycastatic.ca/multimedia/products/1500x1500/194/19417/19417086.jpg" alt="Apple iPhone 17 Pro" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 17 Pro</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://multimedia.bbycastatic.ca/multimedia/products/1500x1500/194/19417/19417086.jpg" alt="Apple iPhone 17 Pro" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 17 Pro</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://multimedia.bbycastatic.ca/multimedia/products/1500x1500/194/19417/19417086.jpg" alt="Apple iPhone 17 Pro" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 17 Pro</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>1 TB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.mobiledokan.com/media/apple-iphone-17-pro-max-deep-blue-official-image.webp" alt="Apple iPhone 17 Pro Max" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 17 Pro Max</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.mobiledokan.com/media/apple-iphone-17-pro-max-deep-blue-official-image.webp" alt="Apple iPhone 17 Pro Max" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 17 Pro Max</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.mobiledokan.com/media/apple-iphone-17-pro-max-deep-blue-official-image.webp" alt="Apple iPhone 17 Pro Max" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 17 Pro Max</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>1 TB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://www.mobiledokan.com/media/apple-iphone-17-pro-max-deep-blue-official-image.webp" alt="Apple iPhone 17 Pro Max" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>Apple iPhone 17 Pro Max</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>2 TB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>—</strong></div>
-            <div class="spec"><label>المعالج</label><strong>—</strong></div>
-          </div>
-        </article></div></section><section class="brand" id="brand-5"><div class="section-title"><h2>realme</h2><span>12 إصدار</span></div><div class="grid">
-        <article class="card">
-          <div class="device-img"><img src="https://static.toiimg.com/thumb/resizemode-4%2Cmsid-132984133%2Cwidth-1070/132984133.jpg" alt="realme 16 Pro" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>realme 16 Pro</h3>
-            <div class="memory"><b>8+16 GB</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.78” AMOLED 144Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>200MP+8MP + 50MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7000mAh · 80W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Dimensity 7300 Max</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://mobelat.com/wp-content/uploads/2025/07/realme-15-pro-shot2-mobelat.jpg" alt="realme 15 Pro" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>realme 15 Pro</h3>
-            <div class="memory"><b>12+12 GB</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.8” Curved+</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP+50MP+50MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7000mAh · 80W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 7 Gen 4</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://kolshzin.com/wp-content/uploads/2025/05/REALME-14-PRO-GREY.jpg" alt="realme 14 Pro" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>realme 14 Pro</h3>
-            <div class="memory"><b>12+12 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.77” Curved+</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP+50MP+16MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6000mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>MTK 7300</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://miamicenters.com/wp-content/uploads/2025/11/LIGHT-BLUE-2.webp" alt="realme 15T" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>realme 15T</h3>
-            <div class="memory"><b>12+12 GB</b><small>RAM</small><b>512 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.57” AMOLED</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP+2MP + 50MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6550mAh · 60W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>MTK D6400 Max</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://miamicenters.com/wp-content/uploads/2025/11/LIGHT-BLUE-2.webp" alt="realme 15T" loading="lazy"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>realme 15T</h3>
-            <div class="memory"><b>12+12 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.57” AMOLED</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP+2MP + 50MP front</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6550mAh · 60W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>MTK D6400 Max</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://findgsm.com/uploads/gadgets/realmec100-34b79d.jpg" alt="realme C100" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>realme C100</h3>
-            <div class="memory"><b>8+16 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.8” HD 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP + 5MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>8000mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>MTK G92 Max</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://api.technopolis.bg/medias/Product-details-main-510975.jpg?context=bWFzdGVyfHJvb3R8MzE5MzMzfGltYWdlL2pwZWd8YURjNUwyaGxOQzgyTWpjM016Z3pNek13TWpBME5pOVFjbTlrZFdOMExXUmxkR0ZwYkhNdGJXRnBibDgxTVRBNU56VXVhbkJufGJjZTBlNDFiMGYzMWFhZjFiNTIwYzBhYWJiNTc2YjFjMzZmNjgzMWFkOTM4YjM4OWI3YzU0Yjc3OWU5MzU4Yjk" alt="realme C100x" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>realme C100x</h3>
-            <div class="memory"><b>6+12 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.8” HD 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP + 5MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>8000mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>T7250</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://images.tcdn.com.br/img/img_prod/656057/celular_smartphone_realme_c85_pro_tela_6_8_camera_50mp_8_gb_ram_256_gb_2761_1_59db41644f780888932eac2e162a50cc.jpg" alt="realme C85 Pro" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>realme C85 Pro</h3>
-            <div class="memory"><b>8+16 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.8” AMOLED</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP+8MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>7000mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Snapdragon 685</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://api.technopolis.bg/medias/Product-details-main-510975.jpg?context=bWFzdGVyfHJvb3R8MzE5MzMzfGltYWdlL2pwZWd8YURjNUwyaGxOQzgyTWpjM016Z3pNek13TWpBME5pOVFjbTlrZFdOMExXUmxkR0ZwYkhNdGJXRnBibDgxTVRBNU56VXVhbkJufGJjZTBlNDFiMGYzMWFhZjFiNTIwYzBhYWJiNTc2YjFjMzZmNjgzMWFkOTM4YjM4OWI3YzU0Yjc3OWU5MzU4Yjk" alt="realme C100x" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>realme C100x</h3>
-            <div class="memory"><b>4+8 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.8” HD 120Hz</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>50MP + 5MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>8000mAh · 45W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>T7250</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://media.dinomarket.com/docs/imgTD/2026-05/DM_63E2676AF35EC3214C65228F0FCDBBD6_260526170502_ll.jpg" alt="realme C100i" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>realme C100i</h3>
-            <div class="memory"><b>4+8 GB</b><small>RAM</small><b>256 GB</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>6.8”</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>8MP + 5MP</strong></div>
-            <div class="spec"><label>البطارية</label><strong>6600mAh · 15W</strong></div>
-            <div class="spec"><label>المعالج</label><strong>T7250</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://img.tatacliq.com/images/i17/1348Wx2000H/MP000000021745695_1348Wx2000H_202403300952441.jpeg" alt="realme Air 3s" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>realme Air 3s</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>—</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>40-hour playback</strong></div>
-            <div class="spec"><label>المعالج</label><strong>Bluetooth 5.3</strong></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="device-img"><img src="https://visanta.com/87247-large_default/auriculares-realme-buds-t300-negro.jpg" alt="realme T300" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span>صورة حقيقية للجهاز</span></div><span>الصورة الرسمية</span></div>
-          <div class="content">
-            <h3>realme T300</h3>
-            <div class="memory"><b>—</b><small>RAM</small><b>—</b><small>ROM</small></div>
-            <p>نسخة متوفرة ضمن قائمة المهندس للالكترونيات، مع عرض أهم المواصفات لسهولة المقارنة.</p>
-            <div class="spec"><label>الشاشة</label><strong>—</strong></div>
-            <div class="spec"><label>الكاميرا</label><strong>—</strong></div>
-            <div class="spec"><label>البطارية</label><strong>40-hour playback</strong></div>
-            <div class="spec"><label>المعالج</label><strong>ANC · Bluetooth 5.3</strong></div>
-          </div>
-        </article></div></section></main>
-<div class="note">هذه النسخة V17 مبنية على جداول المنتجات التي أرسلتموها. لم تتم إضافة أسعار. أما الأجهزة التي لم تتضمن الجداول مواصفاتها، فتم ترك الحقول غير المتوفرة دون اختلاق بيانات.</div>
+<div class="topbar"><div class="container topbar-inner"><span>⚡ حلول إلكترونية متكاملة</span><span>ضمان • جودة • دعم فني</span></div></div>
+<header class="header">
+  <div class="container nav">
+    <a href="#home" class="brand" onclick="showHome()">
+
+      <svg viewBox="0 0 100 100" aria-label="شعار المهندس">
+        <path d="M10 72V20l31 23V62L25 49v23z" fill="#dce8f2"/>
+        <path d="M45 43l35-23v52L65 62V47L45 60z" fill="#20a7ff"/>
+        <path d="M36 73V53m13 20V47m13 26V52" stroke="#67ddff" stroke-width="5"/>
+        <circle cx="36" cy="53" r="5" fill="#67ddff"/><circle cx="49" cy="47" r="5" fill="#67ddff"/><circle cx="62" cy="52" r="5" fill="#67ddff"/>
+      </svg>
+      <div><span>المهندس</span><small>للإلكترونيات</small></div>
+    </a>
+    <nav class="navlinks">
+      <a href="#home" onclick="showHome()">الرئيسية</a>
+      <a href="#mobile">موبايل</a><a href="#computer">كمبيوتر</a><a href="#tablet">تابلت</a>
+      <a href="#cctv">كاميرات</a><a href="#solar">طاقة شمسية</a><a href="#telecom">خطوط الاتصالات</a><a href="#routers">راوترات الإنترنت</a><a href="#maintenance">الصيانة</a><a href="#services">الخدمات</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="nav-contact" href="#services">تواصل معنا</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="القائمة">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="home">
+<section class="container hero">
+  <div class="hero-copy">
+    <span class="badge">متجر إلكترونيات • اتصالات • حلول ذكية</span>
+    <h1>كل التقنية<br><span>في مكان واحد</span></h1>
+    <p>المهندس للإلكترونيات — أجهزة، اتصالات، راوترات، كاميرات مراقبة، طاقة شمسية وصيانة. تصفّح الأقسام واختر ما يناسبك.</p>
+    <div class="actions">
+      <button class="btn primary" onclick="openCategory('mobile')">تصفح الأجهزة</button>
+      <button class="btn ghost" onclick="openOffers()">🔥 شاهد العروض</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>7+</strong><span>أقسام رئيسية</span></div>
+      <div class="hero-stat"><strong>20+</strong><span>علامة ومنتج</span></div>
+      <div class="hero-stat"><strong>دعم</strong><span>واستفسارات</span></div>
+    </div>
+  </div>
+  <div class="hero-art">
+  <div class="glow"></div>
+  <div class="floating-card fc1">📱<span>أحدث الأجهزة</span></div>
+  <div class="floating-card fc2">☀️<span>طاقة ذكية</span></div>
+  <div class="phone"><div class="camera"><div class="lens"></div><div class="lens"></div></div><div class="phone-screen"><b>المهندس</b><small>للإلكترونيات</small><div class="screen-line"></div><div class="screen-pills"><i></i><i></i><i></i></div></div></div>
+</div>
+</section>
+
+<section class="trust-strip container">
+  <div><strong>01</strong><span>اختيارات متنوعة<br><small>أجهزة وحلول تقنية</small></span></div>
+  <div><strong>02</strong><span>خدمة موثوقة<br><small>دعم وصيانة</small></span></div>
+  <div><strong>03</strong><span>حلول متكاملة<br><small>للمنزل والعمل</small></span></div>
+  <div><strong>04</strong><span>تجربة سهلة<br><small>وصول سريع للأقسام</small></span></div>
+</section>
+
+<section class="container home-highlights">
+  <div class="highlight-box highlight-offer">
+    <span class="highlight-label">🔥 العروض والخصومات</span>
+    <h3>صفحة العروض</h3>
+    <p>واجهة مخصصة للعروض القادمة، مع السعر القديم والجديد ونسبة الخصم وصورة المنتج وزر الطلب.</p>
+    <div class="highlight-actions"><button class="btn primary" onclick="openOffers()">استكشف العروض</button></div>
+  </div>
+  <div class="highlight-box highlight-connect">
+    <span class="highlight-label">📶 اتصال وإنترنت</span>
+    <h3>خطوط + راوترات</h3>
+    <p>قسمان منفصلان لخطوط الاتصالات وراوترات الإنترنت.</p>
+    <div class="highlight-actions">
+      <button class="btn ghost" onclick="openCategory('telecom')">الخطوط</button>
+      <button class="btn ghost" onclick="openCategory('routers')">الراوترات</button>
+    </div>
+  </div>
+</section>
+
+<section class="section container" id="categories">
+  <div class="section-head"><div><h2>أقسام المتجر</h2><p>كل ما تحتاجه في مكان واحد</p></div></div>
+  <div class="cards">
+    <div class="card" onclick="openCategory('mobile')"><div class="icon">📱</div><b>أجهزة موبايل</b><span>الهواتف والعلامات</span></div>
+    <div class="card" onclick="openCategory('computer')"><div class="icon">💻</div><b>كمبيوتر</b><span>حاسبات ولابتوبات</span></div>
+    <div class="card" onclick="openCategory('tablet')"><div class="icon">▣</div><b>تابلت</b><span>أجهزة لوحية</span></div>
+    <div class="card" onclick="openCategory('cctv')"><div class="icon">📷</div><b>كاميرات مراقبة</b><span>مراقبة وحماية</span></div>
+    <div class="card" onclick="openCategory('solar')"><div class="icon">☀️</div><b>الطاقة الشمسية</b><span>حلول طاقة متكاملة</span></div>
+    <div class="card" onclick="openCategory('maintenance')"><div class="icon">🛠️</div><b>الصيانة</b><span>تشخيص وإصلاح</span></div>
+    <div class="card offer-card" onclick="openOffers()"><div class="icon">🔥</div><b>صفحة العروض</b><span>عروض وخصومات مميزة</span><em>جديد</em></div>
+    <div class="card telecom-card" onclick="openCategory('telecom')"><div class="icon">📶</div><b>خطوط الاتصالات</b><span>خطوط وباقات وإنترنت</span></div>
+    <div class="card router-card" onclick="openCategory('routers')"><div class="icon">📡</div><b>راوترات الإنترنت</b><span>راوترات وحلول اتصال</span></div>
+    <div class="card" onclick="openCategory('services')"><div class="icon">⚡</div><b>الخدمات</b><span>حلول ودعم</span></div>
+  </div>
+</section>
+
+<section class="section container">
+ <div class="feature">
+  <div class="panel"><h3>لماذا المهندس؟</h3><p>تصميم واضح وسريع، تصنيف ذكي للمنتجات، صفحات مستقلة لكل قسم، وتجربة متجاوبة مع الهاتف والكمبيوتر.</p><div class="chips"><span class="chip">ضمان</span><span class="chip">جودة</span><span class="chip">خبرة</span><span class="chip">دعم فني</span></div></div>
+  <div class="panel"><h3>حلول تقنية متكاملة</h3><p>من الهاتف والكمبيوتر إلى كاميرات المراقبة والطاقة الشمسية والصيانة — واجهة واحدة تبني الثقة وتسهّل الوصول لما تبحث عنه.</p><div class="actions"><button class="btn primary" onclick="openCategory('services')">شاهد الخدمات</button></div></div>
+ </div>
+</section>
+</main>
+
+
+<section id="offersPage" class="offers-page">
+  <div class="container">
+    <div class="offers-hero">
+      <div>
+        <button class="btn ghost back" onclick="showHome()">← العودة للرئيسية</button>
+        <span class="category-label">المهندس للإلكترونيات • عروض خاصة</span>
+        <h1>عروض لا تفوّت</h1>
+        <p>مساحة مخصصة لأحدث العروض والخصومات. سنضيف هنا المنتجات والأسعار الفعلية عند تجهيز بيانات المتجر.</p>
+      </div>
+    </div>
+    <div class="offer-filter">
+      <button class="active" onclick="filterOffers('all',this)">كل العروض</button>
+      <button onclick="filterOffers('mobile',this)">موبايلات</button>
+      <button onclick="filterOffers('computer',this)">لابتوبات</button>
+      <button onclick="filterOffers('cctv',this)">كاميرات</button>
+      <button onclick="filterOffers('solar',this)">طاقة شمسية</button>
+    </div>
+    <div class="offer-grid" id="offerGrid"></div>
+  </div>
+</section>
+
+<section id="page">
+  <div class="container page-hero">
+    <button class="btn ghost back" onclick="showHome()">← العودة للرئيسية</button>
+    <span class="category-label" id="pageLabel"></span>
+    <h1 id="pageTitle"></h1>
+    <p id="pageDesc"></p>
+    <input class="search" id="search" placeholder="ابحث عن شركة..." oninput="filterBrands()">
+    <div class="manufacturer-grid" id="brands"></div>
+  </div>
+</section>
+<section class="cta container">
+  <div><span class="badge">نحن هنا لخدمتك</span><h2>جاهز لاختيار الحل المناسب؟</h2><p>استكشف الأقسام أو تواصل معنا للحصول على المساعدة المناسبة لاحتياجك.</p></div>
+  <a class="btn primary" href="#categories">استكشف الأقسام ←</a>
+</section>
+<section class="container store-benefits">
+  <div class="benefit"><div>🛍️</div><strong>تشكيلة متنوعة</strong><span>أجهزة وحلول تقنية متعددة</span></div>
+  <div class="benefit"><div>🔥</div><strong>عروض مميزة</strong><span>صفحة عروض مخصصة</span></div>
+  <div class="benefit"><div>📞</div><strong>خدمة واستفسار</strong><span>تواصل مباشر مع المتجر</span></div>
+  <div class="benefit"><div>🔧</div><strong>صيانة ودعم</strong><span>حلول ما بعد البيع</span></div>
+</section>
+
+<footer class="footer">© 2026 المهندس للإلكترونيات — تقنية متقدمة ... حلول ذكية</footer>
+
 <script>
-const btns=[...document.querySelectorAll('.tabs button')], sections=[...document.querySelectorAll('section.brand')];
-btns.forEach(b=>b.onclick=()=>{btns.forEach(x=>x.classList.remove('active'));b.classList.add('active');let f=b.dataset.brand;sections.forEach(s=>s.style.display=f==='all'||s.querySelector('h2').textContent===f?'block':'none')})
+const data={
+ mobile:{
+  title:"أجهزة الموبايل",
+  desc:"اختر الشركة ثم تصفّح موديلات الهواتف مع صورة ونبذة ومواصفات مختصرة.",
+  brands:["Samsung","Apple","Xiaomi","Redmi","POCO","Huawei","HONOR","OPPO","OnePlus","vivo","realme","Motorola","Nokia","Sony","Google Pixel","ASUS","ZTE","Tecno","Infinix","TCL","Nothing","HTC","Lenovo","Meizu","nubia"]
+},
+  computer:{title:"الكمبيوتر",desc:"شركات الحواسيب المكتبية والمحمولة ومحطات العمل والأجهزة الاحترافية.",brands:["Dell","HP","Lenovo","ASUS","Acer","Apple","MSI","Razer","Microsoft","Samsung","LG","Huawei","Gigabyte","ASRock","Intel","Framework","Fujitsu","Dynabook","Panasonic","Alienware"]},
+ tablet:{title:"أجهزة التابلت",desc:"مجموعة واسعة من أشهر مصنّعي الأجهزة اللوحية وأنظمة التعليم والعمل والترفيه.",brands:["Apple iPad","Samsung Galaxy Tab","Lenovo Tab","Huawei MatePad","Xiaomi Pad","HONOR Pad","Microsoft Surface","Amazon Fire","HUAWEI MatePad","OPPO Pad","OnePlus Pad","realme Pad","TCL Tab","Nokia T Series","ASUS"]},
+ cctv:{title:"كاميرات المراقبة",desc:"مصنّعو أنظمة المراقبة والكاميرات الشبكية وأجهزة التسجيل والحماية.",brands:["Hikvision","Dahua","Axis Communications","Hanwha Vision","Bosch","TP-Link VIGI","Uniview","Tiandy","Honeywell","Pelco","Avigilon","Vivotek","ZKTeco","Reolink","EZVIZ","Imou","D-Link","Ubiquiti","Arlo","Ring"]},
+ solar:{title:"الطاقة الشمسية",desc:"مصنّعو الألواح الشمسية والعاكسات والبطاريات وحلول الطاقة المتجددة.",brands:["LONGi","JinkoSolar","JA Solar","Trina Solar","Canadian Solar","Qcells","REC","Risen Energy","Sungrow","Huawei FusionSolar","Growatt","SMA","Fronius","GoodWe","SolarEdge","Victron Energy","BYD","Pylontech","Enphase Energy","Deye"]},
+ maintenance:{title:"الصيانة",desc:"خدمات فحص وتشخيص وصيانة الأجهزة الإلكترونية وإعادة الأجهزة إلى أفضل أداء.",brands:["صيانة شاشات","صيانة موبايلات","صيانة لابتوبات","تبديل بطاريات","إصلاح منافذ الشحن","صيانة لوحات إلكترونية","استعادة بيانات","تنظيف وصيانة دورية","تركيب أنظمة مراقبة","فحص أنظمة الطاقة الشمسية"]},
+ services:{title:"الخدمات",desc:"حلول متكاملة للأفراد والشركات مع تركيب وتجهيز ودعم فني.",brands:["بيع الأجهزة","تجهيز شبكات","تركيب كاميرات","حلول الطاقة الشمسية","تجهيز مكاتب","استشارات تقنية","دعم فني","ضمان وخدمة ما بعد البيع","توريد للشركات","طلبات الجملة"]}
+};
+
+const mobileModels={
+  Samsung:[
+    ["Galaxy S26 Ultra","الرائد الأقوى من سامسونج، شاشة كبيرة وكاميرات متقدمة وأداء قوي.","6.9” • 5G • كاميرا 200MP"],
+    ["Galaxy S26+","هاتف رائد بشاشة كبيرة وأداء سريع وتصميم نحيف.","6.7” • 5G • بطارية كبيرة"],
+    ["Galaxy S26","هاتف رائد بحجم عملي وأداء قوي وتجربة كاميرا متطورة.","6.3” • 5G • AMOLED"],
+    ["Galaxy A57 5G","هاتف من فئة Galaxy A يجمع شاشة ممتازة وأداء يومي واتصال 5G.","6.7” • 5G • بطارية 5000mAh"],
+    ["Galaxy Z Fold7","هاتف قابل للطي يفتح إلى تجربة شاشة كبيرة مناسبة للعمل والترفيه.","قابل للطي • 5G • شاشة كبيرة"],
+    ["Galaxy Z Flip7","هاتف قابل للطي بحجم جيبي وتصميم عصري وشاشة خارجية عملية.","قابل للطي • 5G • تصميم مدمج"]
+  ],
+  Apple:[
+    ["iPhone 17 Pro Max","هاتف Apple الرائد، مناسب للتصوير والأداء الاحترافي والشاشة الكبيرة.","شاشة 6.9” • 5G • Pro"],
+    ["iPhone 17 Pro","أداء احترافي في حجم أكثر توازنًا مع نظام كاميرات متقدم.","شاشة 6.3” • 5G • Pro"],
+    ["iPhone 17","هاتف متوازن للاستخدام اليومي مع أداء قوي وكاميرات متطورة.","شاشة 6.3” • 5G"],
+    ["iPhone 17e","خيار iPhone أبسط بسعر أقرب للفئة المتوسطة مع تجربة iOS.","شاشة 6.1” • 5G"],
+    ["iPhone Air","تصميم نحيف وخفيف مع تجربة iPhone حديثة.","تصميم نحيف • 5G • iOS"]
+  ],
+  Xiaomi:[
+    ["Xiaomi 17 Ultra","هاتف رائد يركز على التصوير والأداء والشاشة عالية الجودة.","5G • كاميرات Leica • AMOLED"],
+    ["Xiaomi 17","رائد بحجم عملي وأداء قوي وتجربة تصوير متقدمة.","5G • AMOLED • أداء رائد"]
+  ],
+  Redmi:[
+    ["Redmi Note 15 Pro+ 5G","هاتف عملي قوي للفئة المتوسطة مع شاشة ممتازة وبطارية كبيرة.","5G • AMOLED • بطارية كبيرة"],
+    ["Redmi Note 15 Pro 5G","توازن بين السعر والأداء والكاميرا للاستخدام اليومي.","5G • AMOLED • كاميرا عالية الدقة"]
+  ],
+  HONOR:[
+    ["HONOR Magic8 Pro","هاتف رائد يركز على الكاميرا والشاشة والأداء.","5G • شاشة AMOLED • كاميرات متقدمة"],
+    ["HONOR 400 Pro","فئة قوية للاستخدام اليومي والتصوير مع تصميم أنيق.","5G • AMOLED • بطارية كبيرة"]
+  ],
+  OPPO:[
+    ["OPPO Find X9 Pro","هاتف رائد بتجربة تصوير وشاشة وأداء متقدمة.","5G • AMOLED • كاميرات متقدمة"],
+    ["OPPO Reno15 Pro","هاتف أنيق يركز على التصوير والشاشة وتجربة الاستخدام اليومية.","5G • AMOLED • تصوير"]
+  ],
+  OnePlus:[
+    ["OnePlus 15","هاتف أداء رائد سريع ومناسب للألعاب والاستخدام المكثف.","5G • AMOLED • أداء رائد"],
+    ["OnePlus 15R","خيار قوي يوازن بين الأداء والسعر والبطارية.","5G • AMOLED • بطارية كبيرة"]
+  ],
+  vivo:[
+    ["vivo X300 Pro","هاتف رائد يركز على التصوير والأداء والشحن السريع.","5G • AMOLED • تصوير احترافي"],
+    ["vivo V60","هاتف للفئة المتوسطة العليا مع تركيز على الكاميرا والتصميم.","5G • AMOLED • كاميرات متقدمة"]
+  ],
+  realme:[
+    ["realme GT 7 Pro","هاتف أداء قوي للألعاب والاستخدام المكثف.","5G • AMOLED • أداء رائد"],
+    ["realme 15 Pro","هاتف متوازن مع شاشة ممتازة وبطارية كبيرة.","5G • AMOLED • بطارية كبيرة"]
+  ],
+  Huawei:[
+    ["HUAWEI Pura 80 Pro","هاتف رائد يركز على التصوير والتصميم والشاشة.","5G/اتصال حسب السوق • كاميرات متقدمة"],
+    ["HUAWEI Mate 70 Pro","هاتف رائد للأداء والتصوير وتجربة الاستخدام المتقدمة.","شاشة OLED • كاميرات متقدمة"]
+  ],
+  Google:[
+    ["Pixel 10 Pro XL","هاتف Google الرائد مع تجربة Android وكاميرات تعتمد على الذكاء الاصطناعي.","5G • OLED • AI"],
+    ["Pixel 10 Pro","هاتف رائد بحجم متوازن وتجربة Android مباشرة.","5G • OLED • AI"]
+  ]
+};
+
+function modelImage(name){
+  const q=encodeURIComponent(name+" smartphone product");
+  return "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=700&q=80";
+}
+
+function openMobileBrand(brand){
+  const models=mobileModels[brand] || [];
+  document.getElementById('home').style.display='none';
+  document.getElementById('page').style.display='block';
+  document.getElementById('pageLabel').textContent='أجهزة الموبايل • '+brand;
+  document.getElementById('pageTitle').textContent=brand;
+  document.getElementById('pageDesc').textContent=models.length
+    ? 'موديلات '+brand+' — اختر الجهاز للاطلاع على النبذة والمواصفات.'
+    : 'سنضيف موديلات '+brand+' المتوفرة في المتجر قريبًا.';
+  document.getElementById('search').placeholder='ابحث عن موديل...';
+  document.getElementById('search').value='';
+  document.getElementById('brands').className='manufacturer-grid mobile-model-grid';
+  renderMobileModels(models);
+  history.pushState({mobileBrand:brand},'',`#mobile-${encodeURIComponent(brand)}`);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function renderMobileModels(models){
+  const target=document.getElementById('mobileModelsList') || document.getElementById('brands');
+  target.innerHTML=models.map((m,i)=>`
+    <article class="mobile-model">
+      <div class="model-photo"><img src="${modelImage(m[0])}" alt="${m[0]}" loading="lazy"></div>
+      <div class="model-body">
+        <span class="model-brand">هاتف ذكي</span>
+        <h3>${m[0]}</h3>
+        <p>${m[1]}</p>
+        <div class="model-specs">${m[2]}</div>
+        <button class="btn ghost" onclick="alert('سنضيف السعر والتوفر ورقم التواصل لهذا الجهاز عند اعتماد بيانات المتجر.')">استفسر عن الجهاز</button>
+      </div>
+    </article>`).join('') || '<div class="empty-state">لا توجد موديلات مضافة لهذه الشركة حاليًا.</div>';
+}
+
+let current=[];
+
+const offers=[
+ {cat:"mobile",label:"موبايلات",icon:"📱",title:"عرض موبايل مميز",desc:"سيتم وضع اسم الجهاز ومواصفاته هنا.",price:"—",old:"—",discount:"عرض قريباً"},
+ {cat:"computer",label:"لابتوبات",icon:"💻",title:"عرض لابتوب",desc:"سيتم إضافة تفاصيل العرض والسعر عند تجهيز المنتجات.",price:"—",old:"—",discount:"عرض قريباً"},
+ {cat:"cctv",label:"كاميرات",icon:"📷",title:"باقة كاميرات مراقبة",desc:"سيتم وضع محتويات الباقة والمواصفات هنا.",price:"—",old:"—",discount:"عرض قريباً"},
+ {cat:"solar",label:"طاقة شمسية",icon:"☀️",title:"حل طاقة شمسية",desc:"سيتم إضافة القدرة والمكونات والسعر هنا.",price:"—",old:"—",discount:"عرض قريباً"},
+ {cat:"mobile",label:"موبايلات",icon:"🔥",title:"خصم خاص",desc:"مكان مخصص للعروض المحدودة والصفقات اليومية.",price:"—",old:"—",discount:"خصم"},
+ {cat:"computer",label:"لابتوبات",icon:"⚡",title:"عرض الشركات",desc:"عروض خاصة للشركات والمكاتب والطلبات المتعددة.",price:"—",old:"—",discount:"خاص"}
+];
+function renderOffers(filter="all"){
+ const grid=document.getElementById('offerGrid');
+ const items=filter==="all"?offers:offers.filter(o=>o.cat===filter);
+ grid.innerHTML=items.map(o=>`<article class="offer-product"><span class="offer-badge">${o.discount}</span><div class="offer-image">${o.icon}</div><div class="offer-body"><span class="offer-cat">${o.label}</span><h3>${o.title}</h3><p>${o.desc}</p><div class="price-row"><span class="new-price">${o.price}</span><span class="currency">د.أ</span><span class="old-price">${o.old}</span></div><div class="offer-actions"><a class="btn primary" href="#services">اطلب الآن</a><a class="btn ghost" href="#services">واتساب</a></div><div class="offer-note">سيتم تحديث السعر والتفاصيل عند إضافة العرض</div></div></article>`).join('');
+}
+function openOffers(){
+ document.getElementById('home').style.display='none';
+ document.getElementById('page').style.display='none';
+ document.getElementById('offersPage').style.display='block';
+ renderOffers();
+ history.pushState({key:'offers'},'', '#offers');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function filterOffers(filter,btn){
+ document.querySelectorAll('.offer-filter button').forEach(b=>b.classList.remove('active'));
+ btn.classList.add('active'); renderOffers(filter);
+}
+
+
+function renderMobileHome(){
+  const brands=Object.keys(mobileModels);
+  const first=brands[0];
+  document.getElementById('brands').className='manufacturer-grid mobile-catalog';
+  document.getElementById('brands').innerHTML=`
+    <div class="mobile-brand-tabs">${brands.map((b,i)=>`<button class="brand-tab ${i===0?'active':''}" onclick="selectMobileBrand('${b.replace(/'/g,"\\'")}',this)">${b}</button>`).join('')}</div>
+    <div id="mobileModelsList" class="mobile-model-grid"></div>`;
+  renderMobileModels(mobileModels[first]);
+}
+function selectMobileBrand(brand,el){
+  document.querySelectorAll('.brand-tab').forEach(x=>x.classList.remove('active'));
+  if(el) el.classList.add('active');
+  document.getElementById('mobileModelsList').innerHTML=(mobileModels[brand]||[]).map(m=>`
+    <article class="mobile-model">
+      <div class="model-photo"><img src="${modelImage(m[0])}" alt="${m[0]}" loading="lazy"></div>
+      <div class="model-body">
+        <span class="model-brand">${brand}</span>
+        <h3>${m[0]}</h3>
+        <p>${m[1]}</p>
+        <div class="model-specs">${m[2]}</div>
+        <button class="btn ghost" onclick="alert('سنضيف السعر والتوفر ورقم التواصل لهذا الجهاز عند اعتماد بيانات المتجر.')">استفسر عن الجهاز</button>
+      </div>
+    </article>`).join('') || '<div class="empty-state">لا توجد موديلات مضافة لهذه الشركة حاليًا.</div>';
+}
+
+function openCategory(key){
+  const d=data[key]; current=d.brands;
+  document.getElementById('home').style.display='none';
+  document.getElementById('page').style.display='block';
+  document.getElementById('pageLabel').textContent = key==='telecom' ? 'اتصالات • خطوط وباقات' : key==='routers' ? 'إنترنت • راوترات وحلول اتصال' : 'قسم المهندس للإلكترونيات';
+  document.getElementById('pageTitle').textContent=d.title;
+  document.getElementById('pageDesc').textContent=d.desc + (key==='telecom' ? ' الشركات الرئيسية الثلاث في خدمات الهاتف المتنقل هي زين وأورنج وأمنية.' : '');
+  document.getElementById('search').value='';
+  if(key==='mobile'){ renderMobileHome(); } else { renderBrands(current); }
+  history.pushState({key},'',`#${key}`);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function renderBrands(items){
+ document.getElementById('brands').className='manufacturer-grid';
+ const isMobile = document.getElementById('pageTitle').textContent==='أجهزة الموبايل';
+ document.getElementById('brands').innerHTML=items.map((b,i)=>{
+   const exists=!!mobileModels[b];
+   return `<div class="manufacturer ${isMobile?'brand-clickable':''}" ${isMobile?`onclick="openMobileBrand('${b.replace(/'/g,"\\'")}')`:''}>
+     <span>${b}</span>${isMobile&&exists?'<small>عرض الموديلات ←</small>':''}
+   </div>`;
+ }).join('');
+}
+function filterBrands(){
+ const q=document.getElementById('search').value.trim().toLowerCase();
+ if(document.getElementById('pageTitle').textContent!=='أجهزة الموبايل' && document.getElementById('brands').classList.contains('mobile-model-grid')){
+   const brand=document.getElementById('pageLabel').textContent.split('•').pop().trim();
+   renderMobileModels((mobileModels[brand]||[]).filter(m=>m[0].toLowerCase().includes(q)));
+   return;
+ }
+ renderBrands(current.filter(b=>b.toLowerCase().includes(q)));
+}
+function showHome(){
+ document.getElementById('page').style.display='none';
+ document.getElementById('home').style.display='block';
+ history.pushState({},'', '#home');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleMenu(){
+  const nav=document.querySelector('.navlinks');
+  nav.classList.toggle('open');
+}
+document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.navlinks').classList.remove('open')));
+
+window.addEventListener('popstate',()=>{
+ const key=location.hash.slice(1);
+ if(data[key]) openCategory(key); else showHome();
+});
+const initial=location.hash.slice(1);
+if(initial==='offers') openOffers(); else if(data[initial]) openCategory(initial);
 </script>
-</body></html>
+</body>
+</html>
