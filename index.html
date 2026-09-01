@@ -188,6 +188,27 @@ h1 span{color:var(--blue)}
 
 .mobile-model .model-specs{line-height:2}
 .mobile-model h3{margin-bottom:4px}
+
+.samsung-showcase{margin:0 0 22px;border-radius:24px;overflow:hidden;min-height:210px;padding:30px 34px;background:linear-gradient(110deg,#06142a 0%,#0b2345 58%,#112f59 100%);border:1px solid #1d416d;display:flex;align-items:center;justify-content:space-between;position:relative}
+.samsung-showcase-copy{position:relative;z-index:2;max-width:560px}
+.samsung-showcase-copy>span{font-size:12px;font-weight:900;letter-spacing:3px;color:#fff}
+.samsung-showcase-copy h2{font-size:28px;margin:8px 0;color:#fff}
+.samsung-showcase-copy p{font-size:12px;line-height:1.9;color:#c9d7e8;margin:0}
+.samsung-showcase-devices{width:330px;height:190px;position:relative;flex:none}
+.device-shape{position:absolute;width:86px;height:168px;border-radius:18px;background:linear-gradient(145deg,#e9edf3,#7b8797);border:3px solid #cfd7e0;box-shadow:0 20px 35px #0007;bottom:2px}
+.device-shape:before{content:"";position:absolute;inset:5px;border-radius:14px;background:linear-gradient(145deg,#172338,#506b95)}
+.device-shape:after{content:"";position:absolute;left:8px;top:12px;width:24px;height:24px;border-radius:50%;background:#111;box-shadow:0 29px #111,0 58px #111}
+.device-shape.d1{right:190px;transform:rotate(-9deg);opacity:.9}
+.device-shape.d2{right:100px;transform:rotate(1deg);height:180px}
+.device-shape.d3{right:12px;transform:rotate(9deg);height:170px}
+.mobile-model{transition:transform .2s ease,box-shadow .2s ease}
+.mobile-model:hover{transform:translateY(-4px);box-shadow:0 18px 38px #0005}
+.model-photo{background:linear-gradient(145deg,#f8fafc,#e7edf5)}
+.model-photo img{object-fit:contain;padding:16px}
+.model-body{direction:rtl;text-align:right}
+.model-brand{display:inline-block;background:#eef5ff;border-radius:999px;padding:4px 9px}
+.model-specs{font-size:11px}
+@media(max-width:700px){.samsung-showcase{padding:24px}.samsung-showcase-devices{display:none}.samsung-showcase-copy h2{font-size:23px}}
 </style>
 </head>
 <body>
@@ -506,7 +527,20 @@ function renderMobileHome(){
   document.getElementById('brands').className='manufacturer-grid mobile-catalog';
   document.getElementById('brands').innerHTML=`
     <div class="mobile-brand-tabs">${brands.map((b,i)=>`<button class="brand-tab ${i===0?'active':''}" onclick="selectMobileBrand('${b.replace(/'/g,"\\'")}',this)">${b}</button>`).join('')}</div>
-    <div id="mobileModelsList" class="mobile-model-grid"></div>`;
+    <div id="mobileModelsList" class="mobile-model-grid"></div>
+    <div id="samsungShowcase"></div>`;
+  if(document.getElementById('samsungShowcase')) document.getElementById('samsungShowcase').innerHTML=`
+<section class="samsung-showcase">
+  <div class="samsung-showcase-copy">
+    <span>Samsung</span>
+    <h2>أجهزة Samsung المتوفرة لدينا</h2>
+    <p>اختَر السعة المناسبة لك، وتعرّف على أهم مواصفات كل جهاز. الأسعار غير معروضة حاليًا.</p>
+  </div>
+  <div class="samsung-showcase-devices" aria-hidden="true">
+    <div class="device-shape d1"></div><div class="device-shape d2"></div><div class="device-shape d3"></div>
+  </div>
+</section>
+`;
   selectMobileBrand(first, document.querySelector('.brand-tab'));
 }
 function selectMobileBrand(brand,el){
