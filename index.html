@@ -139,6 +139,52 @@ h1 span{color:var(--blue)}
 .telecom-card:hover,.router-card:hover{border-color:#67ddff88}
 
 .connectivity-note{margin:0 0 28px;color:var(--muted);font-size:13px;line-height:2}
+
+/* ===== Homepage storefront upgrade V8 ===== */
+.hero{min-height:650px;padding:72px 0 86px}
+.hero-copy{position:relative;z-index:2}
+.hero-copy h1{letter-spacing:-1.5px}
+.hero-stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:28px}
+.hero-stat{display:flex;flex-direction:column;gap:2px}
+.hero-stat strong{font-size:20px}.hero-stat span{font-size:10px;color:var(--muted)}
+.home-highlights{display:grid;grid-template-columns:1.35fr .65fr;gap:14px;margin:-24px auto 35px;position:relative;z-index:5}
+.highlight-box{min-height:210px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,#121f2f,#0a121c);padding:26px;position:relative;overflow:hidden;box-shadow:0 18px 45px #0004}
+.highlight-box:after{position:absolute;left:18px;bottom:-32px;font-size:120px;opacity:.055}
+.highlight-offer:after{content:"🔥"}.highlight-connect:after{content:"📡"}
+.highlight-box h3{font-size:24px;margin:9px 0}.highlight-box p{color:var(--muted);font-size:12px;line-height:2;max-width:520px}
+.highlight-label{font-size:11px;font-weight:900;color:#f5b942}
+.highlight-connect .highlight-label{color:#67ddff}
+.highlight-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.section-head .view-all{color:#67ddff;font-size:12px;font-weight:900;text-decoration:none}
+.card{min-height:175px}
+.card .icon{font-size:34px}
+.store-benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:5px auto 45px}
+.benefit{border:1px solid var(--line);background:#ffffff04;border-radius:18px;padding:18px;text-align:center}
+.benefit strong{display:block;margin:7px 0;font-size:13px}.benefit span{color:var(--muted);font-size:10px}
+@media(max-width:850px){.home-highlights{grid-template-columns:1fr}.store-benefits{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.hero{min-height:auto}.store-benefits{grid-template-columns:1fr}}
+
+.mobile-model-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.manufacturer.brand-clickable{cursor:pointer;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.manufacturer.brand-clickable small{font-size:10px;color:var(--cyan);font-weight:800}
+.mobile-model{overflow:hidden;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#101a27,#0b1119);box-shadow:0 15px 35px #0003}
+.model-photo{height:230px;background:#f4f5f7;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.model-photo img{width:100%;height:100%;object-fit:cover}
+.model-body{padding:17px}
+.model-brand{font-size:10px;color:var(--gold);font-weight:900}
+.model-body h3{font-size:18px;margin:6px 0}
+.model-body p{font-size:11px;color:var(--muted);line-height:1.9;min-height:43px}
+.model-specs{font-size:10px;color:#b9c7d8;border-top:1px solid var(--line);padding-top:10px;margin-top:10px}
+.model-body .btn{margin-top:14px;width:100%}
+.empty-state{grid-column:1/-1;text-align:center;padding:45px;color:var(--muted)}
+@media(max-width:950px){.mobile-model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.mobile-model-grid{grid-template-columns:1fr}.model-photo{height:250px}}
+
+.mobile-catalog{display:block}
+.mobile-brand-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.brand-tab{border:1px solid var(--line);background:#ffffff06;color:#d9e5f2;border-radius:12px;padding:10px 14px;cursor:pointer;font:inherit;font-size:12px;font-weight:800}
+.brand-tab.active{background:linear-gradient(135deg,var(--blue),#0069ff);border-color:transparent;color:#fff}
+.mobile-catalog .mobile-model-grid{display:grid}
 </style>
 </head>
 <body>
@@ -169,13 +215,18 @@ h1 span{color:var(--blue)}
 
 <main id="home">
 <section class="container hero">
-  <div>
-    <span class="badge">تقنية متقدمة • حلول ذكية • ثقة تدوم</span>
-    <h1>المهندس<br><span>للإلكترونيات</span></h1>
-    <p>وجهتك المتكاملة للأجهزة الإلكترونية، حلول المراقبة، الطاقة الشمسية والصيانة. اختر القسم الذي تريد واستكشف العلامات والخدمات المتاحة.</p>
+  <div class="hero-copy">
+    <span class="badge">متجر إلكترونيات • اتصالات • حلول ذكية</span>
+    <h1>كل التقنية<br><span>في مكان واحد</span></h1>
+    <p>المهندس للإلكترونيات — أجهزة، اتصالات، راوترات، كاميرات مراقبة، طاقة شمسية وصيانة. تصفّح الأقسام واختر ما يناسبك.</p>
     <div class="actions">
-      <button class="btn primary" onclick="openCategory('mobile')">استكشف الأجهزة</button>
-      <a class="btn ghost" href="#services">خدماتنا</a>
+      <button class="btn primary" onclick="openCategory('mobile')">تصفح الأجهزة</button>
+      <button class="btn ghost" onclick="openOffers()">🔥 شاهد العروض</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>7+</strong><span>أقسام رئيسية</span></div>
+      <div class="hero-stat"><strong>20+</strong><span>علامة ومنتج</span></div>
+      <div class="hero-stat"><strong>دعم</strong><span>واستفسارات</span></div>
     </div>
   </div>
   <div class="hero-art">
@@ -191,6 +242,24 @@ h1 span{color:var(--blue)}
   <div><strong>02</strong><span>خدمة موثوقة<br><small>دعم وصيانة</small></span></div>
   <div><strong>03</strong><span>حلول متكاملة<br><small>للمنزل والعمل</small></span></div>
   <div><strong>04</strong><span>تجربة سهلة<br><small>وصول سريع للأقسام</small></span></div>
+</section>
+
+<section class="container home-highlights">
+  <div class="highlight-box highlight-offer">
+    <span class="highlight-label">🔥 العروض والخصومات</span>
+    <h3>صفحة العروض</h3>
+    <p>واجهة مخصصة للعروض القادمة، مع السعر القديم والجديد ونسبة الخصم وصورة المنتج وزر الطلب.</p>
+    <div class="highlight-actions"><button class="btn primary" onclick="openOffers()">استكشف العروض</button></div>
+  </div>
+  <div class="highlight-box highlight-connect">
+    <span class="highlight-label">📶 اتصال وإنترنت</span>
+    <h3>خطوط + راوترات</h3>
+    <p>قسمان منفصلان لخطوط الاتصالات وراوترات الإنترنت.</p>
+    <div class="highlight-actions">
+      <button class="btn ghost" onclick="openCategory('telecom')">الخطوط</button>
+      <button class="btn ghost" onclick="openCategory('routers')">الراوترات</button>
+    </div>
+  </div>
 </section>
 
 <section class="section container" id="categories">
@@ -253,18 +322,121 @@ h1 span{color:var(--blue)}
   <div><span class="badge">نحن هنا لخدمتك</span><h2>جاهز لاختيار الحل المناسب؟</h2><p>استكشف الأقسام أو تواصل معنا للحصول على المساعدة المناسبة لاحتياجك.</p></div>
   <a class="btn primary" href="#categories">استكشف الأقسام ←</a>
 </section>
+<section class="container store-benefits">
+  <div class="benefit"><div>🛍️</div><strong>تشكيلة متنوعة</strong><span>أجهزة وحلول تقنية متعددة</span></div>
+  <div class="benefit"><div>🔥</div><strong>عروض مميزة</strong><span>صفحة عروض مخصصة</span></div>
+  <div class="benefit"><div>📞</div><strong>خدمة واستفسار</strong><span>تواصل مباشر مع المتجر</span></div>
+  <div class="benefit"><div>🔧</div><strong>صيانة ودعم</strong><span>حلول ما بعد البيع</span></div>
+</section>
+
 <footer class="footer">© 2026 المهندس للإلكترونيات — تقنية متقدمة ... حلول ذكية</footer>
 
 <script>
 const data={
- mobile:{title:"أجهزة الموبايل",desc:"أبرز الشركات العالمية والمحلية في عالم الهواتف الذكية والأجهزة المحمولة.",brands:["Samsung","Apple","Xiaomi","Redmi","POCO","Huawei","HONOR","OPPO","OnePlus","vivo","realme","Motorola","Nokia","Sony","Google Pixel","ASUS","ZTE","Tecno","Infinix","TCL","Nothing","HTC","Lenovo","Meizu","nubia"]},
- computer:{title:"الكمبيوتر",desc:"شركات الحواسيب المكتبية والمحمولة ومحطات العمل والأجهزة الاحترافية.",brands:["Dell","HP","Lenovo","ASUS","Acer","Apple","MSI","Razer","Microsoft","Samsung","LG","Huawei","Gigabyte","ASRock","Intel","Framework","Fujitsu","Dynabook","Panasonic","Alienware"]},
+ mobile:{
+  title:"أجهزة الموبايل",
+  desc:"اختر الشركة ثم تصفّح موديلات الهواتف مع صورة ونبذة ومواصفات مختصرة.",
+  brands:["Samsung","Apple","Xiaomi","Redmi","POCO","Huawei","HONOR","OPPO","OnePlus","vivo","realme","Motorola","Nokia","Sony","Google Pixel","ASUS","ZTE","Tecno","Infinix","TCL","Nothing","HTC","Lenovo","Meizu","nubia"]
+},
+  computer:{title:"الكمبيوتر",desc:"شركات الحواسيب المكتبية والمحمولة ومحطات العمل والأجهزة الاحترافية.",brands:["Dell","HP","Lenovo","ASUS","Acer","Apple","MSI","Razer","Microsoft","Samsung","LG","Huawei","Gigabyte","ASRock","Intel","Framework","Fujitsu","Dynabook","Panasonic","Alienware"]},
  tablet:{title:"أجهزة التابلت",desc:"مجموعة واسعة من أشهر مصنّعي الأجهزة اللوحية وأنظمة التعليم والعمل والترفيه.",brands:["Apple iPad","Samsung Galaxy Tab","Lenovo Tab","Huawei MatePad","Xiaomi Pad","HONOR Pad","Microsoft Surface","Amazon Fire","HUAWEI MatePad","OPPO Pad","OnePlus Pad","realme Pad","TCL Tab","Nokia T Series","ASUS"]},
  cctv:{title:"كاميرات المراقبة",desc:"مصنّعو أنظمة المراقبة والكاميرات الشبكية وأجهزة التسجيل والحماية.",brands:["Hikvision","Dahua","Axis Communications","Hanwha Vision","Bosch","TP-Link VIGI","Uniview","Tiandy","Honeywell","Pelco","Avigilon","Vivotek","ZKTeco","Reolink","EZVIZ","Imou","D-Link","Ubiquiti","Arlo","Ring"]},
  solar:{title:"الطاقة الشمسية",desc:"مصنّعو الألواح الشمسية والعاكسات والبطاريات وحلول الطاقة المتجددة.",brands:["LONGi","JinkoSolar","JA Solar","Trina Solar","Canadian Solar","Qcells","REC","Risen Energy","Sungrow","Huawei FusionSolar","Growatt","SMA","Fronius","GoodWe","SolarEdge","Victron Energy","BYD","Pylontech","Enphase Energy","Deye"]},
  maintenance:{title:"الصيانة",desc:"خدمات فحص وتشخيص وصيانة الأجهزة الإلكترونية وإعادة الأجهزة إلى أفضل أداء.",brands:["صيانة شاشات","صيانة موبايلات","صيانة لابتوبات","تبديل بطاريات","إصلاح منافذ الشحن","صيانة لوحات إلكترونية","استعادة بيانات","تنظيف وصيانة دورية","تركيب أنظمة مراقبة","فحص أنظمة الطاقة الشمسية"]},
  services:{title:"الخدمات",desc:"حلول متكاملة للأفراد والشركات مع تركيب وتجهيز ودعم فني.",brands:["بيع الأجهزة","تجهيز شبكات","تركيب كاميرات","حلول الطاقة الشمسية","تجهيز مكاتب","استشارات تقنية","دعم فني","ضمان وخدمة ما بعد البيع","توريد للشركات","طلبات الجملة"]}
 };
+
+const mobileModels={
+  Samsung:[
+    ["Galaxy S26 Ultra","الرائد الأقوى من سامسونج، شاشة كبيرة وكاميرات متقدمة وأداء قوي.","6.9” • 5G • كاميرا 200MP"],
+    ["Galaxy S26+","هاتف رائد بشاشة كبيرة وأداء سريع وتصميم نحيف.","6.7” • 5G • بطارية كبيرة"],
+    ["Galaxy S26","هاتف رائد بحجم عملي وأداء قوي وتجربة كاميرا متطورة.","6.3” • 5G • AMOLED"],
+    ["Galaxy A57 5G","هاتف من فئة Galaxy A يجمع شاشة ممتازة وأداء يومي واتصال 5G.","6.7” • 5G • بطارية 5000mAh"],
+    ["Galaxy Z Fold7","هاتف قابل للطي يفتح إلى تجربة شاشة كبيرة مناسبة للعمل والترفيه.","قابل للطي • 5G • شاشة كبيرة"],
+    ["Galaxy Z Flip7","هاتف قابل للطي بحجم جيبي وتصميم عصري وشاشة خارجية عملية.","قابل للطي • 5G • تصميم مدمج"]
+  ],
+  Apple:[
+    ["iPhone 17 Pro Max","هاتف Apple الرائد، مناسب للتصوير والأداء الاحترافي والشاشة الكبيرة.","شاشة 6.9” • 5G • Pro"],
+    ["iPhone 17 Pro","أداء احترافي في حجم أكثر توازنًا مع نظام كاميرات متقدم.","شاشة 6.3” • 5G • Pro"],
+    ["iPhone 17","هاتف متوازن للاستخدام اليومي مع أداء قوي وكاميرات متطورة.","شاشة 6.3” • 5G"],
+    ["iPhone 17e","خيار iPhone أبسط بسعر أقرب للفئة المتوسطة مع تجربة iOS.","شاشة 6.1” • 5G"],
+    ["iPhone Air","تصميم نحيف وخفيف مع تجربة iPhone حديثة.","تصميم نحيف • 5G • iOS"]
+  ],
+  Xiaomi:[
+    ["Xiaomi 17 Ultra","هاتف رائد يركز على التصوير والأداء والشاشة عالية الجودة.","5G • كاميرات Leica • AMOLED"],
+    ["Xiaomi 17","رائد بحجم عملي وأداء قوي وتجربة تصوير متقدمة.","5G • AMOLED • أداء رائد"]
+  ],
+  Redmi:[
+    ["Redmi Note 15 Pro+ 5G","هاتف عملي قوي للفئة المتوسطة مع شاشة ممتازة وبطارية كبيرة.","5G • AMOLED • بطارية كبيرة"],
+    ["Redmi Note 15 Pro 5G","توازن بين السعر والأداء والكاميرا للاستخدام اليومي.","5G • AMOLED • كاميرا عالية الدقة"]
+  ],
+  HONOR:[
+    ["HONOR Magic8 Pro","هاتف رائد يركز على الكاميرا والشاشة والأداء.","5G • شاشة AMOLED • كاميرات متقدمة"],
+    ["HONOR 400 Pro","فئة قوية للاستخدام اليومي والتصوير مع تصميم أنيق.","5G • AMOLED • بطارية كبيرة"]
+  ],
+  OPPO:[
+    ["OPPO Find X9 Pro","هاتف رائد بتجربة تصوير وشاشة وأداء متقدمة.","5G • AMOLED • كاميرات متقدمة"],
+    ["OPPO Reno15 Pro","هاتف أنيق يركز على التصوير والشاشة وتجربة الاستخدام اليومية.","5G • AMOLED • تصوير"]
+  ],
+  OnePlus:[
+    ["OnePlus 15","هاتف أداء رائد سريع ومناسب للألعاب والاستخدام المكثف.","5G • AMOLED • أداء رائد"],
+    ["OnePlus 15R","خيار قوي يوازن بين الأداء والسعر والبطارية.","5G • AMOLED • بطارية كبيرة"]
+  ],
+  vivo:[
+    ["vivo X300 Pro","هاتف رائد يركز على التصوير والأداء والشحن السريع.","5G • AMOLED • تصوير احترافي"],
+    ["vivo V60","هاتف للفئة المتوسطة العليا مع تركيز على الكاميرا والتصميم.","5G • AMOLED • كاميرات متقدمة"]
+  ],
+  realme:[
+    ["realme GT 7 Pro","هاتف أداء قوي للألعاب والاستخدام المكثف.","5G • AMOLED • أداء رائد"],
+    ["realme 15 Pro","هاتف متوازن مع شاشة ممتازة وبطارية كبيرة.","5G • AMOLED • بطارية كبيرة"]
+  ],
+  Huawei:[
+    ["HUAWEI Pura 80 Pro","هاتف رائد يركز على التصوير والتصميم والشاشة.","5G/اتصال حسب السوق • كاميرات متقدمة"],
+    ["HUAWEI Mate 70 Pro","هاتف رائد للأداء والتصوير وتجربة الاستخدام المتقدمة.","شاشة OLED • كاميرات متقدمة"]
+  ],
+  Google:[
+    ["Pixel 10 Pro XL","هاتف Google الرائد مع تجربة Android وكاميرات تعتمد على الذكاء الاصطناعي.","5G • OLED • AI"],
+    ["Pixel 10 Pro","هاتف رائد بحجم متوازن وتجربة Android مباشرة.","5G • OLED • AI"]
+  ]
+};
+
+function modelImage(name){
+  const q=encodeURIComponent(name+" smartphone product");
+  return "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=700&q=80";
+}
+
+function openMobileBrand(brand){
+  const models=mobileModels[brand] || [];
+  document.getElementById('home').style.display='none';
+  document.getElementById('page').style.display='block';
+  document.getElementById('pageLabel').textContent='أجهزة الموبايل • '+brand;
+  document.getElementById('pageTitle').textContent=brand;
+  document.getElementById('pageDesc').textContent=models.length
+    ? 'موديلات '+brand+' — اختر الجهاز للاطلاع على النبذة والمواصفات.'
+    : 'سنضيف موديلات '+brand+' المتوفرة في المتجر قريبًا.';
+  document.getElementById('search').placeholder='ابحث عن موديل...';
+  document.getElementById('search').value='';
+  document.getElementById('brands').className='manufacturer-grid mobile-model-grid';
+  renderMobileModels(models);
+  history.pushState({mobileBrand:brand},'',`#mobile-${encodeURIComponent(brand)}`);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function renderMobileModels(models){
+  const target=document.getElementById('mobileModelsList') || document.getElementById('brands');
+  target.innerHTML=models.map((m,i)=>`
+    <article class="mobile-model">
+      <div class="model-photo"><img src="${modelImage(m[0])}" alt="${m[0]}" loading="lazy"></div>
+      <div class="model-body">
+        <span class="model-brand">هاتف ذكي</span>
+        <h3>${m[0]}</h3>
+        <p>${m[1]}</p>
+        <div class="model-specs">${m[2]}</div>
+        <button class="btn ghost" onclick="alert('سنضيف السعر والتوفر ورقم التواصل لهذا الجهاز عند اعتماد بيانات المتجر.')">استفسر عن الجهاز</button>
+      </div>
+    </article>`).join('') || '<div class="empty-state">لا توجد موديلات مضافة لهذه الشركة حاليًا.</div>';
+}
+
 let current=[];
 
 const offers=[
@@ -293,6 +465,32 @@ function filterOffers(filter,btn){
  btn.classList.add('active'); renderOffers(filter);
 }
 
+
+function renderMobileHome(){
+  const brands=Object.keys(mobileModels);
+  const first=brands[0];
+  document.getElementById('brands').className='manufacturer-grid mobile-catalog';
+  document.getElementById('brands').innerHTML=`
+    <div class="mobile-brand-tabs">${brands.map((b,i)=>`<button class="brand-tab ${i===0?'active':''}" onclick="selectMobileBrand('${b.replace(/'/g,"\\'")}',this)">${b}</button>`).join('')}</div>
+    <div id="mobileModelsList" class="mobile-model-grid"></div>`;
+  renderMobileModels(mobileModels[first]);
+}
+function selectMobileBrand(brand,el){
+  document.querySelectorAll('.brand-tab').forEach(x=>x.classList.remove('active'));
+  if(el) el.classList.add('active');
+  document.getElementById('mobileModelsList').innerHTML=(mobileModels[brand]||[]).map(m=>`
+    <article class="mobile-model">
+      <div class="model-photo"><img src="${modelImage(m[0])}" alt="${m[0]}" loading="lazy"></div>
+      <div class="model-body">
+        <span class="model-brand">${brand}</span>
+        <h3>${m[0]}</h3>
+        <p>${m[1]}</p>
+        <div class="model-specs">${m[2]}</div>
+        <button class="btn ghost" onclick="alert('سنضيف السعر والتوفر ورقم التواصل لهذا الجهاز عند اعتماد بيانات المتجر.')">استفسر عن الجهاز</button>
+      </div>
+    </article>`).join('') || '<div class="empty-state">لا توجد موديلات مضافة لهذه الشركة حاليًا.</div>';
+}
+
 function openCategory(key){
   const d=data[key]; current=d.brands;
   document.getElementById('home').style.display='none';
@@ -301,15 +499,27 @@ function openCategory(key){
   document.getElementById('pageTitle').textContent=d.title;
   document.getElementById('pageDesc').textContent=d.desc + (key==='telecom' ? ' الشركات الرئيسية الثلاث في خدمات الهاتف المتنقل هي زين وأورنج وأمنية.' : '');
   document.getElementById('search').value='';
-  renderBrands(current);
+  if(key==='mobile'){ renderMobileHome(); } else { renderBrands(current); }
   history.pushState({key},'',`#${key}`);
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function renderBrands(items){
- document.getElementById('brands').innerHTML=items.map((b,i)=>`<div class="manufacturer">${b}</div>`).join('');
+ document.getElementById('brands').className='manufacturer-grid';
+ const isMobile = document.getElementById('pageTitle').textContent==='أجهزة الموبايل';
+ document.getElementById('brands').innerHTML=items.map((b,i)=>{
+   const exists=!!mobileModels[b];
+   return `<div class="manufacturer ${isMobile?'brand-clickable':''}" ${isMobile?`onclick="openMobileBrand('${b.replace(/'/g,"\\'")}')`:''}>
+     <span>${b}</span>${isMobile&&exists?'<small>عرض الموديلات ←</small>':''}
+   </div>`;
+ }).join('');
 }
 function filterBrands(){
  const q=document.getElementById('search').value.trim().toLowerCase();
+ if(document.getElementById('pageTitle').textContent!=='أجهزة الموبايل' && document.getElementById('brands').classList.contains('mobile-model-grid')){
+   const brand=document.getElementById('pageLabel').textContent.split('•').pop().trim();
+   renderMobileModels((mobileModels[brand]||[]).filter(m=>m[0].toLowerCase().includes(q)));
+   return;
+ }
  renderBrands(current.filter(b=>b.toLowerCase().includes(q)));
 }
 function showHome(){
