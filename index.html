@@ -185,6 +185,7 @@ h1 span{color:var(--blue)}
 .brand-tab{border:1px solid var(--line);background:#ffffff06;color:#d9e5f2;border-radius:12px;padding:10px 14px;cursor:pointer;font:inherit;font-size:12px;font-weight:800}
 .brand-tab.active{background:linear-gradient(135deg,var(--blue),#0069ff);border-color:transparent;color:#fff}
 .mobile-catalog .mobile-model-grid{display:grid}
+.contact-strip{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px auto 35px}.contact-card{border:1px solid var(--line);background:linear-gradient(135deg,#101b29,#0a111a);border-radius:18px;padding:18px;display:flex;align-items:center;justify-content:space-between;gap:15px}.contact-card strong{display:block}.contact-card span{color:var(--muted);font-size:11px}.contact-card a{color:#7edcff;font-weight:900;font-size:13px}.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.service-item{border:1px solid var(--line);background:linear-gradient(135deg,#101b29,#0a111a);border-radius:18px;padding:20px}.service-item .icon{font-size:30px}.service-item h3{font-size:16px;margin:8px 0}.service-item p{color:var(--muted);font-size:11px;line-height:1.9;margin:0}@media(max-width:850px){.contact-strip,.service-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.contact-strip,.service-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -320,7 +321,20 @@ h1 span{color:var(--blue)}
 </section>
 <section class="cta container">
   <div><span class="badge">نحن هنا لخدمتك</span><h2>جاهز لاختيار الحل المناسب؟</h2><p>استكشف الأقسام أو تواصل معنا للحصول على المساعدة المناسبة لاحتياجك.</p></div>
-  <a class="btn primary" href="#categories">استكشف الأقسام ←</a>
+  <div class="actions"><a class="btn primary" href="https://wa.me/96792752516" target="_blank" rel="noopener">واتساب ←</a><a class="btn ghost" href="mailto:muradkh4040@gmail.com">البريد الإلكتروني</a></div>
+</section>
+<section class="container contact-strip">
+  <div class="contact-card"><div><strong>📧 البريد الإلكتروني</strong><span>للاستفسارات والطلبات</span></div><a href="mailto:muradkh4040@gmail.com">muradkh4040@gmail.com</a></div>
+  <div class="contact-card"><div><strong>💬 واتساب</strong><span>تواصل مباشر مع المهندس</span></div><a href="https://wa.me/96792752516" target="_blank" rel="noopener">00967 92752516</a></div>
+</section>
+<section class="section container" id="services">
+  <div class="section-head"><div><h2>الخدمات</h2><p>حلول تقنية وإبداعية للأفراد والأعمال</p></div></div>
+  <div class="service-grid">
+    <div class="service-item"><div class="icon">🛒</div><h3>بيع الأجهزة</h3><p>توفير الأجهزة والإكسسوارات والحلول التقنية المناسبة.</p></div>
+    <div class="service-item"><div class="icon">🛠️</div><h3>الصيانة والدعم الفني</h3><p>تشخيص وصيانة الأجهزة وتقديم الدعم الفني.</p></div>
+    <div class="service-item"><div class="icon">🎬</div><h3>تصميم الفيديو</h3><p>تصميم وتحرير فيديوهات إعلانية وتسويقية ومحتوى رقمي.</p></div>
+    <div class="service-item"><div class="icon">🤖</div><h3>خدمات الذكاء الاصطناعي</h3><p>حلول وأدوات ذكاء اصطناعي للمحتوى والتصميم والأعمال.</p></div>
+  </div>
 </section>
 <section class="container store-benefits">
   <div class="benefit"><div>🛍️</div><strong>تشكيلة متنوعة</strong><span>أجهزة وحلول تقنية متعددة</span></div>
@@ -329,7 +343,7 @@ h1 span{color:var(--blue)}
   <div class="benefit"><div>🔧</div><strong>صيانة ودعم</strong><span>حلول ما بعد البيع</span></div>
 </section>
 
-<footer class="footer">© 2026 المهندس للإلكترونيات — تقنية متقدمة ... حلول ذكية</footer>
+<footer class="footer">© 2026 المهندس للإلكترونيات — تقنية متقدمة ... حلول ذكية<br><span>muradkh4040@gmail.com • واتساب: 0096792752516</span></footer>
 
 <script>
 const data={
@@ -346,63 +360,51 @@ const data={
  services:{title:"الخدمات",desc:"حلول متكاملة للأفراد والشركات مع تركيب وتجهيز ودعم فني.",brands:["بيع الأجهزة","تجهيز شبكات","تركيب كاميرات","حلول الطاقة الشمسية","تجهيز مكاتب","استشارات تقنية","دعم فني","ضمان وخدمة ما بعد البيع","توريد للشركات","طلبات الجملة"]}
 };
 
+const makeModels=(names,brand)=>names.map(x=>{
+  const parts=x.split('|'); const name=parts[0], variant=parts[1]||'';
+  return [name, variant?`هاتف ${brand} مع نسخة ذاكرة وتخزين ${variant}. تفاصيل الجهاز والصورة مرتبطة بالموديل عند التحقق من المصدر.`:`جهاز ${brand} ضمن قائمة الأجهزة المتوفرة، مع عرض معلومات الموديل والصورة الحقيقية عند التحقق من المصدر.`, variant?`الذاكرة/التخزين: ${variant}`:`الموديل: ${name}`];
+});
 const mobileModels={
-  Samsung:[
-    ["Galaxy S26 Ultra","الرائد الأقوى من سامسونج، شاشة كبيرة وكاميرات متقدمة وأداء قوي.","6.9” • 5G • كاميرا 200MP"],
-    ["Galaxy S26+","هاتف رائد بشاشة كبيرة وأداء سريع وتصميم نحيف.","6.7” • 5G • بطارية كبيرة"],
-    ["Galaxy S26","هاتف رائد بحجم عملي وأداء قوي وتجربة كاميرا متطورة.","6.3” • 5G • AMOLED"],
-    ["Galaxy A57 5G","هاتف من فئة Galaxy A يجمع شاشة ممتازة وأداء يومي واتصال 5G.","6.7” • 5G • بطارية 5000mAh"],
-    ["Galaxy Z Fold7","هاتف قابل للطي يفتح إلى تجربة شاشة كبيرة مناسبة للعمل والترفيه.","قابل للطي • 5G • شاشة كبيرة"],
-    ["Galaxy Z Flip7","هاتف قابل للطي بحجم جيبي وتصميم عصري وشاشة خارجية عملية.","قابل للطي • 5G • تصميم مدمج"]
-  ],
-  Apple:[
-    ["iPhone 17 Pro Max","هاتف Apple الرائد، مناسب للتصوير والأداء الاحترافي والشاشة الكبيرة.","شاشة 6.9” • 5G • Pro"],
-    ["iPhone 17 Pro","أداء احترافي في حجم أكثر توازنًا مع نظام كاميرات متقدم.","شاشة 6.3” • 5G • Pro"],
-    ["iPhone 17","هاتف متوازن للاستخدام اليومي مع أداء قوي وكاميرات متطورة.","شاشة 6.3” • 5G"],
-    ["iPhone 17e","خيار iPhone أبسط بسعر أقرب للفئة المتوسطة مع تجربة iOS.","شاشة 6.1” • 5G"],
-    ["iPhone Air","تصميم نحيف وخفيف مع تجربة iPhone حديثة.","تصميم نحيف • 5G • iOS"]
-  ],
-  Xiaomi:[
-    ["Xiaomi 17 Ultra","هاتف رائد يركز على التصوير والأداء والشاشة عالية الجودة.","5G • كاميرات Leica • AMOLED"],
-    ["Xiaomi 17","رائد بحجم عملي وأداء قوي وتجربة تصوير متقدمة.","5G • AMOLED • أداء رائد"]
-  ],
-  Redmi:[
-    ["Redmi Note 15 Pro+ 5G","هاتف عملي قوي للفئة المتوسطة مع شاشة ممتازة وبطارية كبيرة.","5G • AMOLED • بطارية كبيرة"],
-    ["Redmi Note 15 Pro 5G","توازن بين السعر والأداء والكاميرا للاستخدام اليومي.","5G • AMOLED • كاميرا عالية الدقة"]
-  ],
-  HONOR:[
-    ["HONOR Magic8 Pro","هاتف رائد يركز على الكاميرا والشاشة والأداء.","5G • شاشة AMOLED • كاميرات متقدمة"],
-    ["HONOR 400 Pro","فئة قوية للاستخدام اليومي والتصوير مع تصميم أنيق.","5G • AMOLED • بطارية كبيرة"]
-  ],
-  OPPO:[
-    ["OPPO Find X9 Pro","هاتف رائد بتجربة تصوير وشاشة وأداء متقدمة.","5G • AMOLED • كاميرات متقدمة"],
-    ["OPPO Reno15 Pro","هاتف أنيق يركز على التصوير والشاشة وتجربة الاستخدام اليومية.","5G • AMOLED • تصوير"]
-  ],
-  OnePlus:[
-    ["OnePlus 15","هاتف أداء رائد سريع ومناسب للألعاب والاستخدام المكثف.","5G • AMOLED • أداء رائد"],
-    ["OnePlus 15R","خيار قوي يوازن بين الأداء والسعر والبطارية.","5G • AMOLED • بطارية كبيرة"]
-  ],
-  vivo:[
-    ["vivo X300 Pro","هاتف رائد يركز على التصوير والأداء والشحن السريع.","5G • AMOLED • تصوير احترافي"],
-    ["vivo V60","هاتف للفئة المتوسطة العليا مع تركيز على الكاميرا والتصميم.","5G • AMOLED • كاميرات متقدمة"]
-  ],
-  realme:[
-    ["realme GT 7 Pro","هاتف أداء قوي للألعاب والاستخدام المكثف.","5G • AMOLED • أداء رائد"],
-    ["realme 15 Pro","هاتف متوازن مع شاشة ممتازة وبطارية كبيرة.","5G • AMOLED • بطارية كبيرة"]
-  ],
-  Huawei:[
-    ["HUAWEI Pura 80 Pro","هاتف رائد يركز على التصوير والتصميم والشاشة.","5G/اتصال حسب السوق • كاميرات متقدمة"],
-    ["HUAWEI Mate 70 Pro","هاتف رائد للأداء والتصوير وتجربة الاستخدام المتقدمة.","شاشة OLED • كاميرات متقدمة"]
-  ],
-  Google:[
-    ["Pixel 10 Pro XL","هاتف Google الرائد مع تجربة Android وكاميرات تعتمد على الذكاء الاصطناعي.","5G • OLED • AI"],
-    ["Pixel 10 Pro","هاتف رائد بحجم متوازن وتجربة Android مباشرة.","5G • OLED • AI"]
-  ]
+ Samsung:makeModels([
+  'A07|4GB-64GB','A07|4GB-128GB','A07|6GB-128GB','A16|4GB-128GB','A16|6GB-128GB','A16|8GB-256GB','A17|4GB-128GB','A17|6GB-128GB','A17|8GB-256GB','A26|6GB-128GB','A26|8GB-256GB','A27|6GB-128GB','A27|8GB-256GB','A36|8GB-128GB','A36|8GB-256GB','A37|8GB-128GB','A37|8GB-256GB','A37|12GB-256GB','A56|8GB-128GB','A56|8GB-256GB','A56|12GB-256GB','A57|8GB-256GB','A57|12GB-256GB','A57|12GB-512GB','S25 Ultra|12GB-256GB','S25 Ultra|12GB-512GB','S26 Ultra|12GB-256GB'], 'Samsung'),
+ HONOR:makeModels(['HONOR Magic V5','HONOR Magic 8 Pro','HONOR 600 Pro|12-512GB','HONOR 600|12-256GB','HONOR 600|8-256GB','HONOR X9d|12-256GB','HONOR X9d|8-256GB','HONOR 600 Lite|8-256GB','HONOR X8d|8-512GB','HONOR X8d|8-256GB','HONOR X7e Plus|8-256GB','HONOR X7e|6-128GB','HONOR X7e|6-256GB','HONOR X7d 5G','HONOR X7d 4G','HONOR X5c|4-64GB','HONOR Choice AI T10|4-64','HONOR Choice AI T10|3-32','HONOR Pad 10 wifi','HONOR Pad X9a WIFI - PM + Pencil lite','HONOR Pad X9a LTE','HONOR Pad X9a wifi','HONOR Pad X8b LTE','HONOR Pad X8b wifi','HONOR Pad X7 LTE','HONOR Pad X7 wifi'],'HONOR'),
+ Xiaomi:makeModels(['Xiaomi 17T|12/512','Xiaomi 17T Pro|12/1TB','Xiaomi 17|12/512','Xiaomi 17 Ultra|16/512','Xiaomi Pad 8|8/256','Xiaomi Pad 8 Pro|12/512'],'Xiaomi'),
+ Redmi:makeModels(['Redmi A7 Pro 4G|4/128','Redmi 15C 4G|8/256','Redmi Note 15|8/256','Redmi Note 15 Pro|8/256','Redmi Note 15 Pro 5G|8/256','Redmi Note 15 Pro 5G|12/256','Redmi Note 15 Pro+ 5G|12/512','Redmi Pad 2 9.7|4/64','Redmi Pad 2 9.7|4/128','Redmi Pad 2 9.7 4G|4/128','Redmi Pad 2 WiFi|4/128','Redmi Pad 2 WiFi|8/256','Redmi Pad 2 4G|8/256','Redmi Pad 2 Pro|8/256'],'Redmi'),
+ Nokia:makeModels(['HMD 100 2G','105C 2G','110 2G','130 2G','150 2G','6310 2G','105 4G','110 4G','215 4G','5710 4G','HMD 101 4G','130 2G Music','150 2G Music'],'Nokia/HMD'),
+ Tecno:makeModels(['CAMON 50 Ultra 5G','CAMON 50 PRO','POVA 7 Ultra 5G','POVA CURVE 2 5G','CAMON 40 PRO 5G','SPARK Slim','SPARK 50 PRO','SPARK 50|256GB','SPARK 50|128GB','SPARK 40 5G','SPARK GO 3|128GB','SPARK GO 3|64GB','MEGAPAD PRO','MEGAPAD SE'],'Tecno'),
+ Apple:makeModels(['iPhone 15|128GB','iPhone 16|128GB','iPhone 16 Plus|128GB','iPhone 16 Plus|256GB','iPhone 17e|256GB','iPhone 17e|512GB','iPhone 17|256GB','iPhone 17|512GB','iPhone Air|256GB','iPhone Air|512GB','iPhone Air|1TB Sky','iPhone 17 Pro|256GB','iPhone 17 Pro|512GB','iPhone 17 Pro|1TB','iPhone 17 Pro Max|256GB','iPhone 17 Pro Max|512GB','iPhone 17 Pro Max|1TB','iPhone 17 Pro Max|2TB'],'Apple'),
+ realme:makeModels(['realme 16 Pro|512GB, RAM 8+16GB','15 Pro|12+12/512','14 Pro|12+12/256','15T|12+12/512','15T|12+12/256','C100|8+16/256','C100x|6+12/256','C85 Pro|8+16/256','C100x|4+8/256','C100i|4+8/256','Air 3S','T300'],'realme')
 };
 
 function modelImage(name){
-  const images={"Galaxy S26 Ultra": "https://images.samsung.com/is/image/samsung/p6pim/levant/sm-s948bzvamea/gallery/levant-galaxy-s26-ultra-s948-sm-s948bzvamea-thumb-550233643?$344_344_PNG$", "Galaxy S26+": "https://images.samsung.com/is/image/samsung/p6pim/levant/sm-s947bzvamea/gallery/levant-galaxy-s26-plus-s947-sm-s947bzvamea-thumb-550233641?$344_344_PNG$", "Galaxy S26": "https://images.samsung.com/is/image/samsung/p6pim/levant/sm-s942bzvamea/gallery/levant-galaxy-s26-s942-sm-s942bzvamea-thumb-550233639?$344_344_PNG$", "Galaxy A57 5G": "https://images.samsung.com/is/image/samsung/p6pim/levant/sm-a576bzvamea/gallery/levant-galaxy-a57-5g-sm-a576bzvamea-thumb-547522507?$344_344_PNG$", "Galaxy Z Fold7": "https://images.samsung.com/is/image/samsung/p6pim/levant/sm-f966bzvamea/gallery/levant-galaxy-z-fold7-f966-sm-f966bzvamea-thumb-545584098?$344_344_PNG$", "Galaxy Z Flip7": "https://images.samsung.com/is/image/samsung/p6pim/levant/sm-f766bzvamea/gallery/levant-galaxy-z-flip7-f766-sm-f766bzvamea-thumb-545583986?$344_344_PNG$", "iPhone 17 Pro Max": "https://www.apple.com/v/iphone-17-pro/c/images/overview/product-viewer/iphone-17-pro-max/deep-blue/iphone-17-pro-max_deep-blue_back__c9c8a0d7b8a8_large.png", "iPhone 17 Pro": "https://www.apple.com/v/iphone-17-pro/c/images/overview/product-viewer/iphone-17-pro/deep-blue/iphone-17-pro_deep-blue_back__c7c8a0d7b8a8_large.png", "iPhone 17": "https://www.apple.com/v/iphone-17/c/images/overview/product-viewer/iphone-17/sage/iphone-17_sage_back__c8c8a0d7b8a8_large.png", "iPhone 17e": "https://www.apple.com/v/iphone-17e/c/images/overview/product-viewer/iphone-17e/black/iphone-17e_black_back__c8c8a0d7b8a8_large.png", "iPhone Air": "https://www.apple.com/v/iphone-air/c/images/overview/product-viewer/iphone-air/sky-blue/iphone-air_sky-blue_back__c8c8a0d7b8a8_large.png", "Xiaomi 17 Ultra": "https://cdn.etoren.com/upload/images/0.84173700_1772420430_xiaomi-17-5g-dual-sim-256gb-venture-green-12gb-ram-global-version.png", "Xiaomi 17": "https://cdn.etoren.com/upload/images/0.84173700_1772420430_xiaomi-17-5g-dual-sim-256gb-venture-green-12gb-ram-global-version.png", "Redmi Note 15 Pro+ 5G": "https://cdn.beebom.com/mobile/redmi-note-15-pro-front-and-back.png", "Redmi Note 15 Pro 5G": "https://itmag.ua/image/cache/catalog/image/cache/catalog/easyphoto/37302/xiaomi-redmi-note-15-pro-12-512gb-smoke-purple-eu-1-570x570.webp", "HONOR Magic8 Pro": "https://lcdn.altex.ro/media/catalog/product/h/o/honor_magic_8_pro_black_01_3037ce09.jpg", "HONOR 400 Pro": "https://www.gulfdeals.com/cdn/shop/files/Shopify_Product_Image_8_3161020d-b515-46d2-8e9d-d6b77e134569_1024x.png?v=1772793057", "OPPO Find X9 Pro": "https://www.oppo.com/content/dam/oppo/common/mkt/v2-2/find-x9-pro-en/images/overview/kv/kv-product.png", "OPPO Reno15 Pro": "https://www.oppo.com/content/dam/oppo/common/mkt/v2-2/reno15-pro-en/images/overview/kv/kv-product.png", "OnePlus 15": "https://image01.oneplus.net/ebp/202510/21/1-m00-18-98-rb8b3c8d8c7c8c8c8c8c8c8c8c8c8c8.png", "OnePlus 15R": "https://image01.oneplus.net/ebp/202510/21/1-m00-18-98-rb8b3c8d8c7c8c8c8c8c8c8c8c8c8c8.png", "vivo X300 Pro": "https://www.vivo.com/content/dam/vivo/common/product/x300-pro/images/x300-pro-black.png", "vivo V60": "https://www.vivo.com/content/dam/vivo/common/product/v60/images/v60-black.png", "realme GT 7 Pro": "https://image01.realme.net/general/20241105/1730781450864.png", "realme 15 Pro": "https://image01.realme.net/general/20250721/1753088432482.png", "HUAWEI Pura 80 Pro": "https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/phones/pura80-pro/img/kv-pura80-pro.png", "HUAWEI Mate 70 Pro": "https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/phones/mate70-pro/img/kv-mate70-pro.png", "Pixel 10 Pro XL": "https://lh3.googleusercontent.com/2R7jK5uQe9Q8V8p5Q4x0q0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0", "Pixel 10 Pro": "https://lh3.googleusercontent.com/2R7jK5uQe9Q8V8p5Q4x0q0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0"};
-  return images[name] || "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=700&q=80";
+  const images={
+    "A07|4GB-64GB":"https://images.samsung.com/is/image/samsung/p6pim/levant/sm-a075fzkdmea/gallery/levant-galaxy-a07-sm-a075-sm-a075fzkdmea-thumb-548868574?$344_344_PNG$",
+    "A07|4GB-128GB":"https://images.samsung.com/is/image/samsung/p6pim/levant/sm-a075fzkgmea/gallery/levant-galaxy-a07-sm-a075-sm-a075fzkgmea-thumb-548868574?$344_344_PNG$",
+    "A07|6GB-128GB":"https://images.samsung.com/is/image/samsung/p6pim/levant/sm-a075fzkumea/gallery/levant-galaxy-a07-sm-a075-sm-a075fzkumea-thumb-548868574?$344_344_PNG$",
+    "Redmi Note 15|8/256":"https://img.pccomponentes.com/articles/1099/10992448/1192-xiaomi-redmi-note-15-4g-8gb-256gb-677-negro-07ba806f-214d-490f-a4a0-47607a9087d5.jpg",
+    "Redmi Note 15 Pro 5G|8/256":"https://itmag.ua/image/cache/catalog/image/cache/catalog/easyphoto/37302/xiaomi-redmi-note-15-pro-12-512gb-smoke-purple-eu-1-570x570.webp",
+    "Xiaomi 17T|12/512":"https://www.phonelectrics.com/cdn/shop/files/Xiaomi17T-1.jpg?v=1781136516",
+    "Xiaomi 17T Pro|12/1TB":"https://storage.irshad.az/products/resized/dBCCckLO22MjGkf6Q71sNsxlm37Z8fST1u6JTHzQ.png",
+    "Xiaomi 17|12/512":"https://cdn.etoren.com/upload/images/0.84173700_1772420430_xiaomi-17-5g-dual-sim-256gb-venture-green-12gb-ram-global-version.png",
+    "15T|12+12/512":"https://miamicenters.com/wp-content/uploads/2025/11/LIGHT-BLUE-2.webp",
+    "C85 Pro|8+16/256":"https://images.tcdn.com.br/img/img_prod/656057/celular_smartphone_realme_c85_pro_tela_6_8_camera_50mp_8_gb_ram_256_gb_2761_1_59db41644f780888932eac2e162a50cc.jpg",
+    "Air 3S":"https://img.tatacliq.com/images/i17/1348Wx2000H/MP000000021745695_1348Wx2000H_202403300952441.jpeg",
+    "T300":"https://visanta.com/87247-large_default/auriculares-realme-buds-t300-negro.jpg",
+    "POVA CURVE 2 5G":"https://i.ebayimg.com/images/g/GVAAAeSwmOFpkaUA/s-l1200.jpg",
+    "SPARK Slim":"https://namzyphones.com/wp-content/uploads/2025/11/namzy-phones-tecno-spark-slim-1.jpg",
+    "CAMON 40 PRO 5G":"https://www.elryan.com/img/600/600/resize/catalog/product/6/6/6628d702a70b4b004cb6fdfc78462cm7-90083.jpg",
+    "POVA 7 Ultra 5G":"https://welectronics.com/images/stories/virtuemart/product/TecnoPova7Ultrawhite1.jpg",
+    "MEGAPAD SE":"https://welectronics.com/images/stories/virtuemart/product/TecnoMegapadSEblue32.jpg",
+    "105 4G":"https://cdn.hoanghamobile.vn/i/previewV2/Uploads/2024/09/06/vox-basic-hmd-vox-basic-r-angle-left-back-cyan-00000.png",
+    "110 4G":"https://images.ctfassets.net/wcfotm6rrl7u/3r9EPXCDLhqsSj1nNCDXjo/0adb870cef82a809046f11212cd2eb7d/HMD_110_4G-Titanium-FrontBack-Int.png?fit=pad&h=602&q=88&w=602",
+    "130 2G Music":"https://spacenet.tn/306747-large_default/telephone-portable-musique-hmd-130-noir.jpg",
+    "215 4G":"https://www.phonebunch.com/phone-pictures/nokia_215_4g_%282024%29-5366%20%281%29.jpg",
+    "5710 4G":"https://images.ctfassets.net/wcfotm6rrl7u/6K7e3Cpc0TDVHkbjEdW1CT/2441f173547bcb7725e427df48c36049/nokia-5710_XpressAudio-black-front_back-int.png?fit=pad&h=195&q=88&w=195",
+    "Redmi Pad 2 9.7 4G|4/128":"https://joybox.uz/wp-content/uploads/2025/07/redmi-pad-2-wi-fi-4128gb-graphite-gray01-2.jpg",
+    "Redmi Pad 2 WiFi|4/128":"https://www.citytel.bg/wp-content/uploads/2025/06/1-69-1222x1500.jpg",
+    "Xiaomi Pad 8|8/256":"https://thumb.pccomponentes.com/w-530-530/articles/1101/11019683/2455-xiaomi-pad-8-112-32k-8gb-128gb-azul-mejor-precio.jpg"
+  };
+  return images[name] || '';
 }
 
 function openMobileBrand(brand){
@@ -426,7 +428,7 @@ function renderMobileModels(models){
   const target=document.getElementById('mobileModelsList') || document.getElementById('brands');
   target.innerHTML=models.map((m,i)=>`
     <article class="mobile-model">
-      <div class="model-photo"><img src="${modelImage(m[0])}" alt="${m[0]}" loading="lazy"></div>
+      <div class="model-photo">${modelImage(m[0])?`<img src="${modelImage(m[0])}" alt="${m[0]}" loading="lazy">`:`<div style="color:#7d8da2;font-size:12px;text-align:center;padding:20px">الصورة الحقيقية لهذا الموديل قيد التحقق</div>`}</div>
       <div class="model-body">
         <span class="model-brand">هاتف ذكي</span>
         <h3>${m[0]}</h3>
@@ -480,7 +482,7 @@ function selectMobileBrand(brand,el){
   if(el) el.classList.add('active');
   document.getElementById('mobileModelsList').innerHTML=(mobileModels[brand]||[]).map(m=>`
     <article class="mobile-model">
-      <div class="model-photo"><img src="${modelImage(m[0])}" alt="${m[0]}" loading="lazy"></div>
+      <div class="model-photo">${modelImage(m[0])?`<img src="${modelImage(m[0])}" alt="${m[0]}" loading="lazy">`:`<div style="color:#7d8da2;font-size:12px;text-align:center;padding:20px">الصورة الحقيقية لهذا الموديل قيد التحقق</div>`}</div>
       <div class="model-body">
         <span class="model-brand">${brand}</span>
         <h3>${m[0]}</h3>
