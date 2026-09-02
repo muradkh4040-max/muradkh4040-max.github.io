@@ -350,7 +350,7 @@ const data={
  mobile:{
   title:"أجهزة الموبايل",
   desc:"اختر الشركة ثم تصفّح موديلات الهواتف مع صورة ونبذة ومواصفات مختصرة.",
-  brands:["Samsung","Apple","Xiaomi","Redmi","POCO","Huawei","HONOR","OPPO","OnePlus","vivo","realme","Motorola","Nokia","Sony","Google Pixel","ASUS","ZTE","Tecno","Infinix","TCL","Nothing","HTC","Lenovo","Meizu","nubia"]
+  brands:["Samsung","Apple","Xiaomi","Redmi","POCO","Huawei","HONOR","OPPO","OnePlus","vivo","realme","Motorola","Nokia","Sony","Google Pixel","ASUS","ZTE","Tecno","Infinix","Reekoo","TCL","Nothing","HTC","Lenovo","Meizu","nubia"]
 },
   computer:{title:"الكمبيوتر",desc:"شركات الحواسيب المكتبية والمحمولة ومحطات العمل والأجهزة الاحترافية.",brands:["Dell","HP","Lenovo","ASUS","Acer","Apple","MSI","Razer","Microsoft","Samsung","LG","Huawei","Gigabyte","ASRock","Intel","Framework","Fujitsu","Dynabook","Panasonic","Alienware"]},
  tablet:{title:"أجهزة التابلت",desc:"مجموعة واسعة من أشهر مصنّعي الأجهزة اللوحية وأنظمة التعليم والعمل والترفيه.",brands:["Apple iPad","Samsung Galaxy Tab","Lenovo Tab","Huawei MatePad","Xiaomi Pad","HONOR Pad","Microsoft Surface","Amazon Fire","HUAWEI MatePad","OPPO Pad","OnePlus Pad","realme Pad","TCL Tab","Nokia T Series","ASUS"]},
@@ -373,7 +373,9 @@ const mobileModels={
  Nokia:makeModels(['HMD 100 2G','105C 2G','110 2G','130 2G','150 2G','6310 2G','105 4G','110 4G','215 4G','5710 4G','HMD 101 4G','130 2G Music','150 2G Music'],'Nokia/HMD'),
  Tecno:makeModels(['CAMON 50 Ultra 5G','CAMON 50 PRO','POVA 7 Ultra 5G','POVA CURVE 2 5G','CAMON 40 PRO 5G','SPARK Slim','SPARK 50 PRO','SPARK 50|256GB','SPARK 50|128GB','SPARK 40 5G','SPARK GO 3|128GB','SPARK GO 3|64GB','MEGAPAD PRO','MEGAPAD SE'],'Tecno'),
  Apple:makeModels(['iPhone 15|128GB','iPhone 16|128GB','iPhone 16 Plus|128GB','iPhone 16 Plus|256GB','iPhone 17e|256GB','iPhone 17e|512GB','iPhone 17|256GB','iPhone 17|512GB','iPhone Air|256GB','iPhone Air|512GB','iPhone Air|1TB Sky','iPhone 17 Pro|256GB','iPhone 17 Pro|512GB','iPhone 17 Pro|1TB','iPhone 17 Pro Max|256GB','iPhone 17 Pro Max|512GB','iPhone 17 Pro Max|1TB','iPhone 17 Pro Max|2TB'],'Apple'),
- realme:makeModels(['realme 16 Pro|512GB, RAM 8+16GB','15 Pro|12+12/512','14 Pro|12+12/256','15T|12+12/512','15T|12+12/256','C100|8+16/256','C100x|6+12/256','C85 Pro|8+16/256','C100x|4+8/256','C100i|4+8/256','Air 3S','T300'],'realme')
+ realme:makeModels(['realme 16 Pro|512GB, RAM 8+16GB','15 Pro|12+12/512','14 Pro|12+12/256','15T|12+12/512','15T|12+12/256','C100|8+16/256','C100x|6+12/256','C85 Pro|8+16/256','C100x|4+8/256','C100i|4+8/256','Air 3S','T300'],'realme'),
+ Infinix:makeModels(['NOTE 60 Pro','GT 30 Pro','SMART 10'],'Infinix'),
+ Reekoo:makeModels(['HERO 70|4GB-64GB','HERO 70 MAX|4GB-128GB'],'Reekoo')
 };
 
 function modelImage(name){
@@ -402,7 +404,12 @@ function modelImage(name){
     "5710 4G":"https://images.ctfassets.net/wcfotm6rrl7u/6K7e3Cpc0TDVHkbjEdW1CT/2441f173547bcb7725e427df48c36049/nokia-5710_XpressAudio-black-front_back-int.png?fit=pad&h=195&q=88&w=195",
     "Redmi Pad 2 9.7 4G|4/128":"https://joybox.uz/wp-content/uploads/2025/07/redmi-pad-2-wi-fi-4128gb-graphite-gray01-2.jpg",
     "Redmi Pad 2 WiFi|4/128":"https://www.citytel.bg/wp-content/uploads/2025/06/1-69-1222x1500.jpg",
-    "Xiaomi Pad 8|8/256":"https://thumb.pccomponentes.com/w-530-530/articles/1101/11019683/2455-xiaomi-pad-8-112-32k-8gb-128gb-azul-mejor-precio.jpg"
+    "Xiaomi Pad 8|8/256":"https://thumb.pccomponentes.com/w-530-530/articles/1101/11019683/2455-xiaomi-pad-8-112-32k-8gb-128gb-azul-mejor-precio.jpg",
+    "GT 30 Pro":"https://d3o31au25zfcly.cloudfront.net/newfileadmin/usp/gt/gt-30-pro/sec1/mb/special/kv-mb-special-edition.webp",
+    "SMART 10":"https://d3o31au25zfcly.cloudfront.net/newfileadmin/usp/smart/smart-10/sec1/mb/sec1-kv-mb-v3.webp",
+    "NOTE 60 Pro":"https://d3o31au25zfcly.cloudfront.net/newfileadmin/usp/note/note-60-pro/sec1/wap/NOTE_60_Pro_V.webp",
+    "HERO 70|4GB-64GB":"https://reekoomobile.com/wp-content/uploads/2026/05/Ice-Blue-1.png",
+    "HERO 70 MAX|4GB-128GB":"https://reekoomobile.com/wp-content/uploads/2026/05/Amber-Brown-1.png"
   };
   return images[name] || '';
 }
